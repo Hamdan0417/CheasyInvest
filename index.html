@@ -1,64 +1,75 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فرصة استثمارية حصرية: مشروع CHEASY</title>
+    <title>CHEASY: فرصة استثمارية حصرية لإعادة تعريف التجارة</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Calm Neutrals -->
-    <!-- Application Structure Plan: تم تصميم التطبيق كهيكل لوحة معلومات تفاعلية مقسمة إلى أقسام مواضيعية (الفرصة، الحل، عرض القيمة، استراتيجية التسويق، إلخ). تم اختيار هذا الهيكل لتوجيه المستثمر المحتمل في رحلة منطقية من فهم المشكلة إلى رؤية العائد المالي المحتمل. هذا النهج أكثر جاذبية وتفاعلية من مجرد عرض مستند خطي، مما يسهل استيعاب النقاط الرئيسية ويعزز المشاركة من خلال عناصر مثل الحاسبة التفاعلية والمخططات الديناميكية. -->
-    <!-- Visualization & Content Choices: تم تحويل البيانات الرئيسية إلى عناصر مرئية تفاعلية لدعم الهيكل المصمم. الأرقام الرئيسية (التمويل المطلوب) -> عرض بارز. توزيع التمويل واقتصاديات العملة -> مخططات دائرية تفاعلية (Chart.js/Canvas) لإظهار النسب بوضوح. عائد المستثمر -> حاسبة تفاعلية (JS) لتعزيز المشاركة. تدفق النقدية وخارطة الطريق -> رسوم بيانية وجداول زمنية مبنية بـ (HTML/CSS) للتوضيح البصري بدون الاعتماد على صور خارجية. المقارنات -> جداول منظمة. الهدف هو تحويل كل جزء من المعلومات إلى تجربة تفاعلية وسهلة الفهم. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Developer Comments:
+    - Professional Aesthetics: Switched to a crisp white background with alternating light gray sections for better visual separation.
+    - Enhanced Typography: Made all key headlines within components extra bold for emphasis and clear hierarchy.
+    - Refined Components: Added subtle borders and refined shadows on cards for a cleaner, more modern look.
+    - New 'How it Works' Section: Added a dedicated visual section to clearly explain the value-flow mechanism.
+    - Improved UX: Fine-tuned animations and transitions for a smoother user experience.
+    - Bolder Titles: Updated section titles to font-black for maximum emphasis as requested.
+    -->
     <style>
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: #f8f9fa;
-            color: #212529;
+            background-color: #ffffff; /* Crisp white background */
+            color: #1e293b; 
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 450px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 350px;
-            max-height: 400px;
+
+        .section-bg-gray {
+            background-color: #f8fafc; /* Light gray for alternating sections */
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 400px;
-            }
+
+        /* --- Custom Animation Classes --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Component Styling --- */
         .section-title {
-            @apply text-3xl md:text-4xl font-extrabold text-gray-800 mb-4 text-center;
+            @apply text-3xl md:text-5xl font-black text-slate-800 mb-4 text-center; /* Updated to font-black */
         }
         .section-subtitle {
-            @apply text-lg md:text-xl text-gray-600 mb-12 text-center max-w-3xl mx-auto;
+            @apply text-lg md:text-xl text-slate-500 mb-12 text-center max-w-3xl mx-auto;
         }
         .card {
-            @apply bg-white rounded-xl shadow-lg p-6 md:p-8 transition-transform duration-300 hover:scale-105;
+            @apply bg-white rounded-2xl shadow-md p-6 md:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-slate-200;
         }
         .btn-primary {
-            @apply bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors duration-300;
+            @apply bg-gradient-to-br from-blue-600 to-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105;
         }
         .btn-secondary {
-            @apply bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-lg hover:bg-gray-300 transition-colors duration-300;
+            @apply bg-white text-slate-800 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg hover:bg-slate-50 transition-all duration-300 transform hover:scale-105;
         }
         .stat-card {
-            @apply bg-blue-50/50 border border-blue-200 rounded-lg p-6 text-center;
+            @apply bg-white/70 backdrop-blur-sm border border-slate-200 rounded-xl p-6 text-center shadow-md;
         }
+
+        /* --- Timeline Enhancement --- */
         .timeline::before {
             content: '';
             position: absolute;
             width: 3px;
-            background-color: #d1d5db;
-            top: 0;
-            bottom: 0;
+            background-image: linear-gradient(to bottom, #3b82f6, #14b8a6);
+            top: 1rem;
+            bottom: 1rem;
             right: 1.25rem;
+            border-radius: 2px;
         }
         .timeline-item {
             position: relative;
@@ -69,463 +80,417 @@
             right: 0;
             top: 0.5rem;
             transform: translateX(45%);
-            width: 1.5rem;
-            height: 1.5rem;
+            width: 1.75rem;
+            height: 1.75rem;
             border-radius: 50%;
-            background-color: #3b82f6;
-            border: 3px solid #bfdbfe;
+            background-color: #fff;
+            border: 5px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover .timeline-dot {
+            transform: translateX(45%) scale(1.1);
+            border-color: #14b8a6;
         }
         .swot-card {
-            @apply rounded-lg p-6;
+            @apply rounded-xl p-6 transition-all duration-300;
         }
+        
+        /* --- Chart Styling --- */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        
+        /* --- Header on Scroll --- */
+        #header.scrolled {
+            @apply bg-white/95 backdrop-blur-lg shadow-lg;
+        }
+        
+        .nav-link.active {
+             color: #2563eb;
+             font-weight: 700;
+        }
+
     </style>
 </head>
 <body class="antialiased">
 
-    <header id="header" class="bg-white shadow-md sticky top-0 z-50">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-blue-600">CHEASY</h1>
-            <div class="hidden md:flex space-x-6 space-x-reverse text-sm">
-                <a href="#opportunity" class="text-gray-600 hover:text-blue-600">الفرصة</a>
-                <a href="#solution" class="text-gray-600 hover:text-blue-600">الحل</a>
-                <a href="#analysis" class="text-gray-600 hover:text-blue-600">تحليل النموذج</a>
-                <a href="#value-prop" class="text-gray-600 hover:text-blue-600">عرض القيمة</a>
-                <a href="#marketing" class="text-gray-600 hover:text-blue-600">التسويق</a>
-                <a href="#tokenomics" class="text-gray-600 hover:text-blue-600">اقتصاديات العملة</a>
-                <a href="#roadmap" class="text-gray-600 hover:text-blue-600">خارطة الطريق</a>
+            <h1 class="text-3xl font-black text-blue-600">CHEASY</h1>
+            <div class="hidden md:flex space-x-8 space-x-reverse text-base font-medium">
+                <a href="#opportunity" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">الفرصة</a>
+                <a href="#solution" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">الحل</a>
+                <a href="#how-it-works" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">آلية العمل</a>
+                <a href="#analysis" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">التحليل</a>
+                <a href="#value-prop" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">عرض القيمة</a>
+                <a href="#tokenomics" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">اقتصاديات العملة</a>
+                <a href="#roadmap" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">خارطة الطريق</a>
             </div>
+             <a href="mailto:h.ghamdi@gmail.com" class="hidden md:block bg-blue-600 text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition-colors duration-300 text-sm">تواصل معنا</a>
         </nav>
     </header>
 
     <main>
-        <section id="hero" class="py-20 md:py-32 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-6xl font-extrabold text-gray-800 mb-4">فرصة استثمارية لإعادة تعريف التجارة</h2>
-                <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-10">
+        <!-- Hero Section -->
+        <section id="hero" class="pt-32 pb-20 md:pt-48 md:pb-32 bg-white relative overflow-hidden">
+            <div class="absolute inset-0 -z-0 opacity-10">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full filter blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-teal-400 rounded-full filter blur-3xl"></div>
+            </div>
+            <div class="container mx-auto px-6 text-center relative z-10">
+                <h2 class="text-4xl md:text-7xl font-black text-slate-800 mb-6 leading-tight">فرصة استثمارية لإعادة تعريف مستقبل التجارة</h2>
+                <p class="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto mb-10">
                     دمج قوة الويب 3.0 مع تجارة التجزئة لبناء منظومة اقتصادية متكاملة ومملوكة لمجتمعها.
                 </p>
-                <div class="flex flex-wrap justify-center gap-8 mb-12">
-                    <div class="stat-card w-full md:w-auto">
-                        <p class="text-gray-500 text-sm font-bold">الطلب الاستثماري (جولة أولية)</p>
+                <div class="flex flex-wrap justify-center gap-6 mb-12">
+                    <div class="stat-card fade-in-up w-full sm:w-auto">
+                        <p class="text-slate-500 text-sm font-bold">الطلب الاستثماري (جولة أولية)</p>
                         <p class="text-4xl font-extrabold text-blue-600">$2,500,000</p>
                     </div>
-                    <div class="stat-card w-full md:w-auto">
-                        <p class="text-gray-500 text-sm font-bold">هدف الطرح الأولي للعملة (ICO)</p>
+                    <div class="stat-card fade-in-up w-full sm:w-auto" style="transition-delay: 150ms;">
+                        <p class="text-slate-500 text-sm font-bold">هدف الطرح الأولي للعملة (ICO)</p>
                         <p class="text-4xl font-extrabold text-blue-600">$30,000,000</p>
                     </div>
                 </div>
                 <div class="flex justify-center space-x-4 space-x-reverse">
-                    <a href="https://store.cheasy.finance" target="_blank" class="btn-primary">تفضل بزيارة متجرنا</a>
-                    <a href="#contact" class="btn-secondary">تواصل معنا</a>
+                    <a href="https://store.cheasy.finance" target="_blank" class="btn-primary text-lg">تفضل بزيارة متجرنا</a>
+                    <a href="mailto:h.ghamdi@gmail.com" class="btn-secondary text-lg">تواصل معنا</a>
                 </div>
             </div>
         </section>
 
-        <section id="opportunity" class="py-20">
+        <!-- Opportunity Section -->
+        <section id="opportunity" class="py-20 section-bg-gray">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">المشكلة والفرصة السوقية</h2>
-                <p class="section-subtitle">
-                    سوق التجارة الإلكترونية العالمي سيصل إلى 7.4 تريليون دولار بحلول 2025، لكنه يعاني من مشاكل هيكلية تخلق فرصة هائلة للابتكار.
-                </p>
+                <div class="fade-in-up">
+                    <h2 class="section-title">المشكلة والفرصة السوقية</h2>
+                    <p class="section-subtitle">
+                        سوق التجارة الإلكترونية العالمي سيصل إلى 7.4 تريليون دولار بحلول 2025، لكنه يعاني من مشاكل هيكلية تخلق فرصة هائلة للابتكار.
+                    </p>
+                </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-2">تكاليف تسويق باهظة</h3>
-                        <p class="text-gray-600">المنافسة الشرسة ترفع تكلفة الإعلانات وتقلص هوامش الربح، مما يجعل النمو مكلفًا وغير مستدام.</p>
+                    <div class="card fade-in-up">
+                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">تكاليف تسويق باهظة</h3>
+                        <p class="text-slate-600">المنافسة الشرسة ترفع تكلفة الإعلانات وتقلص هوامش الربح، مما يجعل النمو مكلفًا وغير مستدام.</p>
                     </div>
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-2">انعدام الثقة</h3>
-                        <p class="text-gray-600">يعاني المستهلكون من تأخر الشحن، تفاوت جودة المنتجات، وصعوبة عمليات الإرجاع، مما يؤدي إلى تجربة سيئة.</p>
+                    <div class="card fade-in-up" style="transition-delay: 100ms;">
+                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">انعدام الثقة</h3>
+                        <p class="text-slate-600">يعاني المستهلكون من تأخر الشحن، تفاوت جودة المنتجات، وصعوبة عمليات الإرجاع، مما يؤدي إلى تجربة سيئة.</p>
                     </div>
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-2">ولاء منخفض</h3>
-                        <p class="text-gray-600">العلاقة بين التاجر والعميل تنتهي بعد الشراء. لا توجد آلية فعالة لتحويل العملاء إلى شركاء في النجاح.</p>
+                    <div class="card fade-in-up" style="transition-delay: 200ms;">
+                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">ولاء منخفض</h3>
+                        <p class="text-slate-600">العلاقة بين التاجر والعميل تنتهي بعد الشراء. لا توجد آلية فعالة لتحويل العملاء إلى شركاء في النجاح.</p>
                     </div>
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-2">فجوة الويب 3.0</h3>
-                        <p class="text-gray-600">معظم المشاريع الرمزية تفتقر إلى نماذج أعمال حقيقية وتدفقات نقدية، مما يجعل قيمتها معتمدة على المضاربة.</p>
+                    <div class="card fade-in-up" style="transition-delay: 300ms;">
+                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">فجوة الويب 3.0</h3>
+                        <p class="text-slate-600">معظم المشاريع الرمزية تفتقر إلى نماذج أعمال حقيقية وتدفقات نقدية، مما يجعل قيمتها معتمدة على المضاربة.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Solution Section -->
         <section id="solution" class="py-20 bg-white">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">الحل: النظام البيئي لـ CHEASY</h2>
-                <p class="section-subtitle">
-                    نحن لا نبني مجرد متجر، بل نظامًا بيئيًا متكاملًا يحل المشاكل الأساسية في السوق عبر ربط أرباح التجارة الحقيقية بقيمة الأصل الرقمي.
-                </p>
+                <div class="fade-in-up">
+                    <h2 class="section-title">الحل: النظام البيئي المتكامل لـ CHEASY</h2>
+                    <p class="section-subtitle">
+                        نحن لا نبني مجرد متجر، بل نظامًا بيئيًا متكاملًا يحل المشاكل الأساسية في السوق عبر ربط أرباح التجارة الحقيقية بقيمة الأصل الرقمي.
+                    </p>
+                </div>
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="card bg-gray-50">
-                        <h3 class="font-bold text-xl mb-2">🛍️ منصة تجارية عالمية</h3>
-                        <p class="text-gray-600">نبدأ بنموذج دروبشيبينغ محسّن ونتطور لتقديم منتجات حصرية وشبكة لوجستية خاصة لضمان الجودة والسرعة.</p>
-                    </div>
-                    <div class="card bg-gray-50">
-                        <h3 class="font-bold text-xl mb-2">💰 رمز CHEASY (أصل انكماشي)</h3>
-                        <p class="text-gray-600">ليس مجرد عملة، بل حصة في نجاح النظام البيئي. قيمته مدفوعة مباشرة بأداء الأعمال التجارية الحقيقية.</p>
-                    </div>
-                    <div class="card bg-gray-50">
-                        <h3 class="font-bold text-xl mb-2">🔥 محرك القيمة (Buyback & Burn)</h3>
-                        <p class="text-gray-600">آلية تلقائية وشفافة تخصص 25% من صافي أرباح المتجر لإعادة شراء الرمز من السوق وحرقه، مما يقلل المعروض ويزيد الندرة.</p>
-                    </div>
-                    <div class="card bg-gray-50">
-                        <h3 class="font-bold text-xl mb-2">🤝 برنامج ولاء متقدم</h3>
-                        <p class="text-gray-600">نحول العملاء إلى شركاء عبر مكافأتهم على حيازة الرمز بخصومات حصرية وامتيازات، مما يخلق مجتمعًا مخلصًا.</p>
-                    </div>
+                    <div class="card bg-slate-50 fade-in-up"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">🛍️</span> منصة تجارية عالمية</h3><p class="text-slate-600">نبدأ بنموذج دروبشيبينغ محسّن ونتطور لتقديم منتجات حصرية وشبكة لوجستية خاصة لضمان الجودة والسرعة.</p></div>
+                    <div class="card bg-slate-50 fade-in-up" style="transition-delay: 100ms;"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">💰</span> رمز CHEASY (أصل انكماشي)</h3><p class="text-slate-600">ليس مجرد عملة، بل حصة في نجاح النظام البيئي. قيمته مدفوعة مباشرة بأداء الأعمال التجارية الحقيقية.</p></div>
+                    <div class="card bg-slate-50 fade-in-up" style="transition-delay: 200ms;"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">🔥</span> محرك القيمة (Buyback & Burn)</h3><p class="text-slate-600">آلية تلقائية وشفافة تخصص 25% من صافي أرباح المتجر لإعادة شراء الرمز من السوق وحرقه، مما يقلل المعروض ويزيد الندرة.</p></div>
+                    <div class="card bg-slate-50 fade-in-up" style="transition-delay: 300ms;"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">🤝</span> برنامج ولاء متقدم</h3><p class="text-slate-600">نحول العملاء إلى شركاء عبر مكافأتهم على حيازة الرمز بخصومات حصرية وامتيازات، مما يخلق مجتمعًا مخلصًا.</p></div>
                 </div>
             </div>
         </section>
 
-        <section id="analysis" class="py-20">
+        <!-- How it Works Section -->
+        <section id="how-it-works" class="py-20 section-bg-gray">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">تحليل أعمق لنموذج العمل</h2>
-                <p class="section-subtitle">
-                    لفهم قوة CHEASY الحقيقية، يجب تفكيك مكوناته الأساسية: ما يميزنا، وكيف تعمل آليات القيمة لدينا، ومن أين تأتي الإيرادات.
-                </p>
-                
-                <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
-                     <h3 class="text-2xl font-bold text-center mb-6">الفصل بين المتجر والعملة: محركان في نظام واحد</h3>
-                     <div class="grid md:grid-cols-2 gap-8 text-center">
-                         <div class="border-l-4 border-blue-500 pl-6">
-                            <h4 class="font-bold text-xl mb-2">متجر CHEASY (المحرك الاقتصادي)</h4>
-                            <p class="text-gray-600">شركة تجارة إلكترونية حقيقية تبيع منتجات مادية وتحقق أرباحًا. نجاحها يُقاس بالمبيعات والأرباح الصافية.</p>
-                         </div>
-                         <div class="border-l-4 border-teal-500 pl-6">
-                            <h4 class="font-bold text-xl mb-2">عملة $CHEASY (الأصل الاستثماري)</h4>
-                            <p class="text-gray-600">أصل رقمي يمثل حصة في نجاح النظام البيئي. أرباح المتجر تغذي قيمته مباشرة عبر آلية الحرق.</p>
-                         </div>
-                     </div>
-                     <p class="mt-8 text-center text-gray-700 bg-gray-100 p-4 rounded-lg">هذا الفصل يضمن وجود أساس اقتصادي حقيقي يدعم قيمة الأصل الرقمي، ويحميه من تقلبات السوق القائمة على المضاربة فقط.</p>
+                <div class="fade-in-up">
+                    <h2 class="section-title">آلية عمل محرك القيمة</h2>
+                    <p class="section-subtitle">دورة اقتصادية بسيطة وفعالة تضمن نمو القيمة بشكل مستدام.</p>
                 </div>
-
-                <div class="grid lg:grid-cols-2 gap-8 mb-12">
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-4">بماذا نتميز؟ (Our Unique Advantage)</h3>
-                        <ul class="space-y-4">
-                            <li class="flex items-start">
-                                <span class="text-green-500 font-bold text-xl ml-3">✓</span>
-                                <p><strong>لسنا مشروع كريبتو، بل شركة تجارة إلكترونية تستخدم الكريبتو كأداة:</strong> قيمتنا تأتي من بيع منتجات حقيقية، والرمز هو آلية لمشاركة هذا النجاح مع المجتمع.</p>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="text-green-500 font-bold text-xl ml-3">✓</span>
-                                <p><strong>محرك قيمة تلقائي ومستمر:</strong> آلية الحرق تعمل كـ "ثقب أسود" اقتصادي، يسحب الرموز من التداول بشكل دائم مع كل دولار من الأرباح.</p>
-                            </li>
-                             <li class="flex items-start">
-                                <span class="text-green-500 font-bold text-xl ml-3">✓</span>
-                                <p><strong>حل جذري لمشكلة الولاء:</strong> نحن نحول كل عميل إلى سفير للعلامة التجارية لأن نجاح المتجر ينعكس مباشرة على قيمة ما يملكونه.</p>
-                            </li>
-                        </ul>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                    <div class="fade-in-up">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-blue-100 text-blue-600 rounded-full text-4xl mb-4">🛒</div>
+                        <h3 class="font-extrabold text-lg mb-2">1. المبيعات</h3>
+                        <p class="text-slate-600">العملاء يشترون المنتجات من متجر CHEASY.</p>
                     </div>
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-4">نموذج العمل وتدفقات الإيرادات</h3>
-                        <p class="text-gray-600 mb-4">نموذجنا المالي متنوع ومصمم للنمو المستدام عبر عدة مصادر:</p>
-                        <ul class="space-y-2 text-sm">
-                            <li>- هوامش مبيعات المنتجات (المصدر الرئيسي).</li>
-                            <li>- رسوم الشحن المحسّنة عبر شبكتنا اللوجستية المستقبلية (FBC).</li>
-                            <li>- اشتراكات الولاء المميزة (Premium Tiers).</li>
-                            <li>- رسوم سوق البائعين (Marketplace Fees) في المراحل المتقدمة.</li>
-                            <li>- عوائد الخزانة (Treasury Yield) من إدارة الأصول.</li>
-                        </ul>
+                    <div class="fade-in-up" style="transition-delay: 150ms;">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-green-100 text-green-600 rounded-full text-4xl mb-4">📈</div>
+                        <h3 class="font-extrabold text-lg mb-2">2. الأرباح</h3>
+                        <p class="text-slate-600">المتجر يحقق أرباحًا صافية من المبيعات.</p>
+                    </div>
+                    <div class="fade-in-up" style="transition-delay: 300ms;">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-yellow-100 text-yellow-600 rounded-full text-4xl mb-4">🔄</div>
+                        <h3 class="font-extrabold text-lg mb-2">3. إعادة الشراء</h3>
+                        <p class="text-slate-600">25% من الأرباح تذهب لصندوق إعادة الشراء.</p>
+                    </div>
+                    <div class="fade-in-up" style="transition-delay: 450ms;">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-red-100 text-red-600 rounded-full text-4xl mb-4">🔥</div>
+                        <h3 class="font-extrabold text-lg mb-2">4. الحرق</h3>
+                        <p class="text-slate-600">يتم شراء وحرق الرموز لزيادة ندرتها وقيمتها.</p>
                     </div>
                 </div>
-
-                <div>
-                    <h3 class="text-2xl font-bold text-center mb-6">التحليل الرباعي (SWOT)</h3>
+            </div>
+        </section>
+        
+        <!-- Analysis Section -->
+        <section id="analysis" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                 <div class="fade-in-up">
+                    <h2 class="section-title">تحليل أعمق لنموذج العمل</h2>
+                    <p class="section-subtitle">لفهم قوة CHEASY الحقيقية، يجب تفكيك مكوناته الأساسية: ما يميزنا، وكيف تعمل آليات القيمة لدينا، ومن أين تأتي الإيرادات.</p>
+                </div>
+                 <div class="fade-in-up">
+                    <h3 class="text-2xl font-extrabold text-center mb-8">التحليل الرباعي (SWOT)</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="swot-card bg-green-100 border-l-4 border-green-500">
-                            <h4 class="font-bold text-lg text-green-800 mb-2">نقاط القوة (Strengths)</h4>
-                            <ul class="list-disc list-inside text-green-900 text-sm space-y-1">
-                                <li>نموذج اقتصادي يربط الأرباح الحقيقية بقيمة الرمز.</li>
-                                <li>محرك ولاء قوي يحول العملاء إلى ملاك.</li>
-                                <li>آلية انكماشية تزيد الندرة بشكل مستمر.</li>
-                                <li>العمل في سوق التجارة الإلكترونية الضخم والمثبت.</li>
-                            </ul>
-                        </div>
-                        <div class="swot-card bg-red-100 border-l-4 border-red-500">
-                            <h4 class="font-bold text-lg text-red-800 mb-2">نقاط الضعف (Weaknesses)</h4>
-                            <ul class="list-disc list-inside text-red-900 text-sm space-y-1">
-                                <li>الاعتماد الكبير على التنفيذ الناجح للخطة اللوجستية.</li>
-                                <li>تحديات تبني العملات الرقمية من قبل المستخدمين التقليديين.</li>
-                                <li>المنافسة الشرسة في سوق التجارة الإلكترونية.</li>
-                            </ul>
-                        </div>
-                        <div class="swot-card bg-blue-100 border-l-4 border-blue-500">
-                            <h4 class="font-bold text-lg text-blue-800 mb-2">الفرص (Opportunities)</h4>
-                            <ul class="list-disc list-inside text-blue-900 text-sm space-y-1">
-                                <li>النمو الهائل في اقتصاد الويب 3.0 وتقبله.</li>
-                                <li>إمكانية التوسع الجغرافي السريع عبر نموذج الدروبشيبينغ.</li>
-                                <li>بناء أول علامة تجارية عالمية مملوكة للمجتمع.</li>
-                                <li>إطلاق منتجات حصرية (Cheasy Originals) بهوامش ربح أعلى.</li>
-                            </ul>
-                        </div>
-                        <div class="swot-card bg-yellow-100 border-l-4 border-yellow-500">
-                            <h4 class="font-bold text-lg text-yellow-800 mb-2">التهديدات (Threats)</h4>
-                            <ul class="list-disc list-inside text-yellow-900 text-sm space-y-1">
-                                <li>التغيرات التنظيمية والقانونية في أسواق الكريبتو.</li>
-                                <li>تقلبات السوق التي قد تؤثر على شهية المستثمرين.</li>
-                                <li>ظهور منافسين يتبنون نماذج عمل مشابهة.</li>
-                            </ul>
-                        </div>
+                        <div class="swot-card bg-green-50 border-l-4 border-green-500 hover:bg-green-100"><h4 class="font-extrabold text-lg text-green-800 mb-2">نقاط القوة</h4><ul class="list-disc list-inside text-green-900 text-sm space-y-1"><li>نموذج اقتصادي يربط الأرباح الحقيقية بقيمة الرمز.</li><li>محرك ولاء قوي يحول العملاء إلى ملاك.</li><li>آلية انكماشية تزيد الندرة بشكل مستمر.</li></ul></div>
+                        <div class="swot-card bg-red-50 border-l-4 border-red-500 hover:bg-red-100"><h4 class="font-extrabold text-lg text-red-800 mb-2">نقاط الضعف</h4><ul class="list-disc list-inside text-red-900 text-sm space-y-1"><li>الاعتماد الكبير على التنفيذ الناجح للخطة اللوجستية.</li><li>تحديات تبني العملات الرقمية من قبل المستخدمين التقليديين.</li><li>المنافسة الشرسة في سوق التجارة الإلكترونية.</li></ul></div>
+                        <div class="swot-card bg-blue-50 border-l-4 border-blue-500 hover:bg-blue-100"><h4 class="font-extrabold text-lg text-blue-800 mb-2">الفرص</h4><ul class="list-disc list-inside text-blue-900 text-sm space-y-1"><li>النمو الهائل في اقتصاد الويب 3.0 وتقبله.</li><li>إمكانية التوسع الجغرافي السريع عبر نموذج الدروبشيبينغ.</li><li>بناء أول علامة تجارية عالمية مملوكة للمجتمع.</li></ul></div>
+                        <div class="swot-card bg-yellow-50 border-l-4 border-yellow-500 hover:bg-yellow-100"><h4 class="font-extrabold text-lg text-yellow-800 mb-2">التهديدات</h4><ul class="list-disc list-inside text-yellow-900 text-sm space-y-1"><li>التغيرات التنظيمية والقانونية في أسواق الكريبتو.</li><li>تقلبات السوق التي قد تؤثر على شهية المستثمرين.</li><li>ظهور منافسين يتبنون نماذج عمل مشابهة.</li></ul></div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <section id="value-prop" class="py-20 bg-white">
+        <!-- Value Proposition Section -->
+        <section id="value-prop" class="py-20 section-bg-gray">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">عرض القيمة للمستثمر</h2>
-                <p class="section-subtitle">
-                    استثمارك في CHEASY يمنحك حصة مباشرة في محركين للقيمة: أرباح المتجر التشغيلية وعوائد الطرح الأولي للعملة.
-                </p>
-
-                <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
-                    <h3 class="text-2xl font-bold text-center mb-6">حاسبة العائد الاستثماري المحتمل (من أرباح المتجر)</h3>
-                    <p class="text-center text-gray-600 mb-6">أدخل إجمالي الأرباح السنوية المتوقعة للمتجر لترى حصتك كمستثمر. حصتك تمثل 30% من حصة الملاك البالغة 25% من صافي الأرباح.</p>
+                <div class="fade-in-up">
+                    <h2 class="section-title">عرض القيمة للمستثمر</h2>
+                    <p class="section-subtitle">استثمارك في CHEASY يمنحك حصة مباشرة في محركين للقيمة: أرباح المتجر التشغيلية وعوائد الطرح الأولي للعملة.</p>
+                </div>
+                <div class="card max-w-4xl mx-auto fade-in-up">
+                    <h3 class="text-2xl font-extrabold text-center mb-2">حاسبة العائد الاستثماري المحتمل</h3>
+                    <p class="text-center text-slate-600 mb-6">أدخل إجمالي الأرباح السنوية المتوقعة للمتجر لترى حصتك كمستثمر. (تمثل حصتك 30% من حصة الملاك البالغة 25% من صافي الأرباح).</p>
                     <div class="max-w-md mx-auto">
-                        <label for="profitInput" class="block text-sm font-medium text-gray-700 mb-1">صافي أرباح المتجر السنوية (بالدولار)</label>
-                        <input type="number" id="profitInput" value="150000000" class="w-full p-3 border border-gray-300 rounded-lg text-lg text-center" placeholder="e.g., 150000000">
+                        <label for="profitInput" class="block text-sm font-medium text-slate-700 mb-1">صافي أرباح المتجر السنوية (بالدولار)</label>
+                        <input type="number" id="profitInput" value="150000000" class="w-full p-3 border border-slate-300 rounded-lg text-lg text-center focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
                     </div>
                     <div class="mt-8 text-center bg-blue-50 p-6 rounded-lg">
-                        <p class="text-gray-600 text-lg">حصتك السنوية المحتملة:</p>
-                        <p id="investorReturn" class="text-4xl font-extrabold text-blue-600 mt-2">$11,250,000</p>
-                    </div>
-                </div>
-
-                <div class="grid lg:grid-cols-2 gap-8">
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-4">تدفق القيمة: كيف تترجم الأرباح إلى قيمة</h3>
-                        <div class="space-y-4 text-sm">
-                            <div class="flex items-center">
-                                <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">1</span>
-                                <p>العميل يشتري منتجًا ويتم تحقيق أرباح صافية.</p>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">2</span>
-                                <p>يتم تخصيص 25% من الأرباح لصندوق إعادة الشراء والحرق.</p>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">3</span>
-                                <p>النظام يشتري رموز `$CHEASY` من السوق المفتوح.</p>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">4</span>
-                                <p>يتم حرق الرموز المشتراة وإزالتها من التداول نهائيًا.</p>
-                            </div>
-                            <div class="flex items-center">
-                                <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold ml-4">5</span>
-                                <p>يقل المعروض، تزيد الندرة، وترتفع القيمة المحتملة للأصل.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3 class="font-bold text-xl mb-4">حصتك من الطرح الأولي للعملة (ICO)</h3>
-                        <p class="text-gray-600 mb-4">بالإضافة إلى أرباح المتجر، تحصل على 30% من العوائد القابلة للتوزيع بعد تمويل خزينة المشروع من الطرح الأولي.</p>
-                        <div class="bg-gray-50 p-4 rounded-lg space-y-2">
-                             <div class="flex justify-between items-center text-sm">
-                                <span class="text-gray-500">إجمالي العوائد (مثال)</span>
-                                <span class="font-bold">$30,000,000</span>
-                            </div>
-                             <div class="flex justify-between items-center text-sm">
-                                <span class="text-gray-500">تمويل الخزينة (30%)</span>
-                                <span class="font-bold text-red-600">-$9,000,000</span>
-                            </div>
-                            <hr class="my-2">
-                            <div class="flex justify-between items-center">
-                                <span class="text-gray-500">المبلغ القابل للتوزيع</span>
-                                <span class="font-bold">$21,000,000</span>
-                            </div>
-                             <div class="flex justify-between items-center text-lg mt-2">
-                                <span class="font-bold text-green-600">حصتك (30%)</span>
-                                <span class="font-extrabold text-green-600">$6,300,000</span>
-                            </div>
-                        </div>
+                        <p class="text-slate-600 text-lg">حصتك السنوية المحتملة:</p>
+                        <p id="investorReturn" class="text-5xl font-black text-blue-600 mt-2">$11,250,000</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <section id="marketing" class="py-20">
-            <div class="container mx-auto px-6">
-                <h2 class="section-title">استراتيجية استخدام التمويل: 2.5 مليون دولار للتسويق</h2>
-                <p class="section-subtitle">
-                    تركيزنا الكامل على التسويق يهدف إلى بناء زخم هائل وجذب مجتمع عالمي قوي قبل وأثناء الطرح الأولي للعملة، لأن التسويق للعملة هو تسويق للمتجر.
-                </p>
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-4">توزيع ميزانية التسويق</h3>
-                        <p class="text-gray-600 mb-6">سيتم تخصيص الميزانية بدقة للوصول إلى مجتمع الكريبتو العالمي عبر قنوات متعددة لضمان أقصى تأثير ونجاح للاكتتاب.</p>
-                        <ul class="space-y-3">
-                           <li class="flex items-center"><span class="w-3 h-3 bg-blue-500 rounded-full ml-3"></span>45% - حملات المؤثرين والشراكات الإعلامية</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-teal-500 rounded-full ml-3"></span>20% - الشراكات مع منصات الإطلاق</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-amber-500 rounded-full ml-3"></span>15% - بناء المجتمع وبرامج الحوافز</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-indigo-500 rounded-full ml-3"></span>15% - الإعلانات الرقمية والعلاقات العامة</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-rose-500 rounded-full ml-3"></span>5% - الفعاليات العالمية والمشاركة الميدانية</li>
-                        </ul>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="marketingChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        
+        <!-- Marketing & Tokenomics Section -->
         <section id="tokenomics" class="py-20 bg-white">
             <div class="container mx-auto px-6">
-                 <h2 class="section-title">اقتصاديات عملة $CHEASY</h2>
-                <p class="section-subtitle">
-                    تم تصميم اقتصاديات الرمز بعناية لتحقيق التوازن بين تمويل النمو، مكافأة الفريق، وضمان استقرار السوق على المدى الطويل، بمعروض كلي ثابت يبلغ 1 مليار رمز.
-                </p>
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                     <div class="chart-container md:order-2">
-                        <canvas id="tokenomicsChart"></canvas>
+                <div class="fade-in-up">
+                    <h2 class="section-title">استراتيجية التمويل واقتصاديات العملة</h2>
+                    <p class="section-subtitle">تم تصميم خطة التمويل واقتصاديات الرمز لتحقيق نمو متسارع، مكافأة المجتمع، وضمان استقرار السوق على المدى الطويل.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div class="fade-in-up">
+                        <h3 class="text-2xl md:text-3xl font-extrabold mb-4">استخدام التمويل: $2.5 مليون للتسويق</h3>
+                        <p class="text-slate-600 mb-6">تركيزنا الكامل على التسويق يهدف إلى بناء زخم هائل وجذب مجتمع عالمي قوي قبل وأثناء الطرح الأولي للعملة.</p>
+                        <div class="chart-container"><canvas id="marketingChart"></canvas></div>
                     </div>
-                    <div class="md:order-1">
-                        <h3 class="text-2xl font-bold mb-4">توزيع الرمز</h3>
-                        <p class="text-gray-600 mb-6">يضمن التوزيع تلبية احتياجات المشروع الحالية والمستقبلية مع الحفاظ على التزام الفريق والمجتمع.</p>
-                        <ul class="space-y-3">
-                           <li class="flex items-center"><span class="w-3 h-3 bg-blue-500 rounded-full ml-3"></span>40% - التسويق وبناء المجتمع</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-teal-500 rounded-full ml-3"></span>30% - الطرح الأولي للعملة (ICO)</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-amber-500 rounded-full ml-3"></span>15% - الفريق (مع فترة حجز)</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-indigo-500 rounded-full ml-3"></span>10% - السيولة</li>
-                           <li class="flex items-center"><span class="w-3 h-3 bg-rose-500 rounded-full ml-3"></span>5% - طوارئ</li>
-                        </ul>
+                     <div class="fade-in-up" style="transition-delay: 200ms;">
+                        <h3 class="text-2xl md:text-3xl font-extrabold mb-4">اقتصاديات عملة $CHEASY</h3>
+                        <p class="text-slate-600 mb-6">بمعروض كلي ثابت يبلغ 1 مليار رمز، يضمن التوزيع تلبية احتياجات المشروع مع الحفاظ على التزام الفريق والمجتمع.</p>
+                        <div class="chart-container"><canvas id="tokenomicsChart"></canvas></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="roadmap" class="py-20">
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="py-20 section-bg-gray">
             <div class="container mx-auto px-6">
-                <h2 class="section-title">خارطة الطريق الاستراتيجية</h2>
-                <p class="section-subtitle">
-                    خطتنا الطموحة تمتد على مراحل واضحة، بدءًا من الإطلاق وتأسيس السوق، وصولًا إلى النضج والتحول إلى منظمة لامركزية بالكامل يديرها المجتمع.
-                </p>
+                <div class="fade-in-up">
+                    <h2 class="section-title">خارطة الطريق الاستراتيجية</h2>
+                    <p class="section-subtitle">خطتنا الطموحة تمتد على مراحل واضحة، بدءًا من الإطلاق وتأسيس السوق، وصولًا إلى النضج والتحول إلى منظمة لامركزية بالكامل.</p>
+                </div>
                 <div class="relative timeline max-w-2xl mx-auto">
-                    <div class="timeline-item mb-12">
+                    <div class="timeline-item mb-12 fade-in-up">
                         <div class="timeline-dot"></div>
-                        <h3 class="text-xl font-bold mb-1">المرحلة 1: الإطلاق وتأسيس السوق (2025)</h3>
-                        <p class="text-gray-600">إطلاق الرمز والمنصة التجارية (Beta)، وبناء مجتمع أولي قوي وتحقيق أول 50,000 حامل للرمز.</p>
+                        <div class="card">
+                            <h3 class="text-xl font-extrabold mb-1">المرحلة 1: الإطلاق وتأسيس السوق (2025)</h3>
+                            <p class="text-slate-600">إطلاق الرمز والمنصة التجارية (Beta)، وبناء مجتمع أولي قوي وتحقيق أول 50,000 حامل للرمز.</p>
+                        </div>
                     </div>
-                    <div class="timeline-item mb-12">
+                    <div class="timeline-item mb-12 fade-in-up" style="transition-delay: 200ms;">
                         <div class="timeline-dot"></div>
-                        <h3 class="text-xl font-bold mb-1">المرحلة 2: التوسع والبنية التحتية (2026-2027)</h3>
-                        <p class="text-gray-600">إطلاق أول مركز "Fulfilled by Cheasy" (FBC)، التوسع الجغرافي، وتفعيل المرحلة الأولى من الحوكمة المجتمعية (DAO).</p>
+                        <div class="card">
+                            <h3 class="text-xl font-extrabold mb-1">المرحلة 2: التوسع والبنية التحتية (2026-2027)</h3>
+                            <p class="text-slate-600">إطلاق أول مركز "Fulfilled by Cheasy" (FBC)، التوسع الجغرافي، وتفعيل المرحلة الأولى من الحوكمة المجتمعية (DAO).</p>
+                        </div>
                     </div>
-                     <div class="timeline-item">
+                     <div class="timeline-item fade-in-up" style="transition-delay: 400ms;">
                         <div class="timeline-dot"></div>
-                        <h3 class="text-xl font-bold mb-1">المرحلة 3: النضج والسيطرة على السوق (2028-2030)</h3>
-                        <p class="text-gray-600">إطلاق منتجات "Cheasy Originals" الحصرية، توسيع شبكة FBC عالميًا، والتحول إلى منظمة لامركزية بالكامل.</p>
+                        <div class="card">
+                            <h3 class="text-xl font-extrabold mb-1">المرحلة 3: النضج والسيطرة على السوق (2028-2030)</h3>
+                            <p class="text-slate-600">إطلاق منتجات "Cheasy Originals" الحصرية، توسيع شبكة FBC عالميًا، والتحول إلى منظمة لامركزية بالكامل.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Contact/CTA Section -->
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6 text-center">
-                <h2 class="section-title">لماذا الاستثمار الآن؟</h2>
-                <p class="section-subtitle">
-                    أنت لا تستثمر في مجرد فكرة، بل في أصل رقمي مصمم لتزداد ندرته مع كل دولار من الأرباح تحققه الشركة.
-                </p>
-                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-8 text-right">
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2">مرحلة مبكرة ونمو هائل</h4>
-                        <p class="text-gray-600">الاستثمار الآن يعني الدخول قبل مراحل النمو المتسارع والتبني الشامل للسوق، مما يعظم العائد المحتمل.</p>
-                    </div>
-                     <div class="bg-gray-50 p-6 rounded-lg">
-                        <h4 class="font-bold text-lg mb-2">نموذج مثبت ومبتكر</h4>
-                        <p class="text-gray-600">نحن لا نعيد اختراع التجارة، بل نضيف إليها محرك قيمة اقتصادي من الويب 3.0 لم يسبق له مثيل بهذا التكامل.</p>
-                    </div>
-                </div>
-                <div class="mt-12">
-                     <a href="#" class="btn-primary text-lg">انضم إلينا في هذه الرحلة - تواصل معنا</a>
+                <div class="max-w-4xl mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-10 md:p-16 shadow-2xl fade-in-up">
+                    <h2 class="text-3xl md:text-5xl font-black text-white mb-4">لماذا الاستثمار الآن؟</h2>
+                    <p class="text-lg md:text-xl text-slate-300 mb-8">
+                        أنت لا تستثمر في مجرد فكرة، بل في أصل رقمي مصمم لتزداد ندرته مع كل دولار من الأرباح تحققه الشركة. كن جزءًا من المستقبل.
+                    </p>
+                    <a href="mailto:h.ghamdi@gmail.com" class="btn-primary text-lg">انضم إلينا في هذه الرحلة - تواصل معنا</a>
                 </div>
             </div>
         </section>
-
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center text-slate-400">
+             <h2 class="text-2xl font-bold text-white mb-4">CHEASY</h2>
             <p>&copy; 2025 CHEASY. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const chartOptions = {
+            
+            // --- Chart.js Configuration ---
+            const chartDefaultOptions = {
                 responsive: true,
                 maintainAspectRatio: false,
+                cutout: '70%',
                 plugins: {
                     legend: {
                         position: 'bottom',
                         labels: {
-                            font: {
-                                family: 'Tajawal',
-                                size: 14,
-                            },
-                            color: '#334155'
+                            font: { family: 'Tajawal', size: 14 },
+                            color: '#475569',
+                            padding: 20,
+                            boxWidth: 12,
+                            usePointStyle: true,
                         }
+                    },
+                    tooltip: {
+                         bodyFont: { family: 'Tajawal' },
+                         titleFont: { family: 'Tajawal' },
                     }
                 }
             };
+            const chartColors = ['#2563eb', '#0d9488', '#f59e0b', '#4f46e5', '#e11d48'];
 
-            const marketingCtx = document.getElementById('marketingChart').getContext('2d');
-            new Chart(marketingCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['المؤثرين والإعلام', 'منصات الإطلاق', 'بناء المجتمع', 'الإعلانات الرقمية', 'الفعاليات العالمية'],
-                    datasets: [{
-                        label: 'توزيع ميزانية التسويق',
-                        data: [45, 20, 15, 15, 5],
-                        backgroundColor: ['#3b82f6', '#14b8a6', '#f59e0b', '#6366f1', '#f43f5e'],
-                        borderColor: '#f8f9fa',
-                        borderWidth: 4
-                    }]
-                },
-                options: chartOptions
-            });
+            // Marketing Chart
+            const marketingCtx = document.getElementById('marketingChart')?.getContext('2d');
+            if(marketingCtx) {
+                new Chart(marketingCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['المؤثرين والإعلام', 'منصات الإطلاق', 'بناء المجتمع', 'الإعلانات الرقمية', 'الفعاليات العالمية'],
+                        datasets: [{
+                            data: [45, 20, 15, 15, 5],
+                            backgroundColor: chartColors,
+                            borderColor: '#ffffff',
+                            borderWidth: 5,
+                            hoverOffset: 10
+                        }]
+                    },
+                    options: chartDefaultOptions
+                });
+            }
 
-            const tokenomicsCtx = document.getElementById('tokenomicsChart').getContext('2d');
-            new Chart(tokenomicsCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['التسويق والمجتمع', 'الطرح الأولي (ICO)', 'الفريق', 'السيولة', 'طوارئ'],
-                    datasets: [{
-                        label: 'توزيع عملة $CHEASY',
-                        data: [40, 30, 15, 10, 5],
-                        backgroundColor: ['#3b82f6', '#14b8a6', '#f59e0b', '#6366f1', '#f43f5e'],
-                        borderColor: '#f8f9fa',
-                        borderWidth: 4
-                    }]
-                },
-                options: chartOptions
-            });
+            // Tokenomics Chart
+            const tokenomicsCtx = document.getElementById('tokenomicsChart')?.getContext('2d');
+            if(tokenomicsCtx) {
+                new Chart(tokenomicsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['التسويق والمجتمع', 'الطرح الأولي (ICO)', 'الفريق', 'السيولة', 'طوارئ'],
+                        datasets: [{
+                            data: [40, 30, 15, 10, 5],
+                            backgroundColor: chartColors,
+                            borderColor: '#ffffff',
+                            borderWidth: 5,
+                             hoverOffset: 10
+                        }]
+                    },
+                    options: chartDefaultOptions
+                });
+            }
 
+            // --- ROI Calculator ---
             const profitInput = document.getElementById('profitInput');
             const investorReturnEl = document.getElementById('investorReturn');
-            
             const calculateReturn = () => {
+                if (!profitInput || !investorReturnEl) return;
                 const profit = parseFloat(profitInput.value) || 0;
                 const ownersShare = profit * 0.25;
                 const investorShare = ownersShare * 0.30;
-                investorReturnEl.textContent = '$' + investorShare.toLocaleString('en-US', {
-                    maximumFractionDigits: 0
-                });
+                investorReturnEl.textContent = '$' + investorShare.toLocaleString('en-US', { maximumFractionDigits: 0 });
             };
-            
-            profitInput.addEventListener('input', calculateReturn);
+            profitInput?.addEventListener('input', calculateReturn);
+            calculateReturn(); // Initial calculation
 
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+            // --- Scroll Animations ---
+            const animatedElements = document.querySelectorAll('.fade-in-up');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            animatedElements.forEach(el => observer.observe(el));
+
+            // --- Header Scroll Effect ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+             // --- Active Nav Link on Scroll ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 150) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
                 });
             });
+
         });
     </script>
 </body>
 </html>
+
 
