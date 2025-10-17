@@ -44,7 +44,7 @@
         .section-bg-gray { background-color: #f8fafc; }
         .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in-up.is-visible { opacity: 1; transform: translateY(0); }
-        .section-title { @apply text-3xl md:text-5xl font-black text-slate-800 mb-4 text-center; }
+        .section-title { @apply text-5xl md:text-7xl font-black text-slate-800 mb-4 text-center; }
         .section-subtitle { @apply text-lg md:text-xl text-slate-500 mb-12 text-center max-w-3xl mx-auto; }
         .card { @apply bg-white rounded-2xl shadow-md p-6 md:p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border border-slate-200; }
         .btn-primary { @apply bg-gradient-to-br from-blue-600 to-blue-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105; }
@@ -59,7 +59,6 @@
         @media (min-width: 768px) { .chart-container { height: 400px; } }
         #header.scrolled { @apply bg-white/95 backdrop-blur-lg shadow-lg; }
         .nav-link.active { color: #2563eb; font-weight: 700; }
-        /* FAQ Accordion Styles */
         .faq-item details > summary { list-style: none; cursor: pointer; }
         .faq-item details > summary::-webkit-details-marker { display: none; }
         .faq-item details[open] summary .arrow-down { transform: rotate(180deg); }
@@ -71,10 +70,12 @@
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-3xl font-black text-blue-600">CHEASY</h1>
-            <div class="hidden md:flex space-x-8 space-x-reverse text-base font-medium">
+            <div class="hidden md:flex space-x-6 space-x-reverse text-base font-medium">
                 <a href="#opportunity" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">الفرصة</a>
                 <a href="#solution" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">الحل</a>
-                <a href="#how-it-works" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">آلية العمل</a>
+                <a href="#analysis" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">تحليل النموذج</a>
+                <a href="#value-prop" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">عرض القيمة</a>
+                <a href="#financials" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">التفاصيل المالية</a>
                 <a href="#roadmap" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">خارطة الطريق</a>
                 <a href="#faq" class="nav-link text-slate-600 hover:text-blue-600 transition-colors">الأسئلة الشائعة</a>
             </div>
@@ -90,7 +91,6 @@
                 <div class="absolute bottom-0 left-0 w-96 h-96 bg-teal-400 rounded-full filter blur-3xl"></div>
             </div>
             <div class="container mx-auto px-6 text-center relative z-10">
-                <!-- SEO Title Update -->
                 <h2 class="text-4xl md:text-7xl font-black text-slate-800 mb-6 leading-tight">فرصة استثمارية في Web3: مستقبل التجارة الإلكترونية</h2>
                 <p class="text-xl md:text-2xl text-slate-600 max-w-4xl mx-auto mb-10">
                     دمج قوة الويب 3.0 مع تجارة التجزئة لبناء منظومة اقتصادية متكاملة ومملوكة لمجتمعها.
@@ -105,9 +105,15 @@
                         <p class="text-4xl font-extrabold text-blue-600">$30,000,000</p>
                     </div>
                 </div>
-                <div class="flex justify-center space-x-4 space-x-reverse">
-                    <a href="https://store.cheasy.finance" target="_blank" class="btn-primary text-lg">تفضل بزيارة متجرنا</a>
-                    <a href="mailto:h.ghamdi@gmail.com" class="btn-secondary text-lg">تواصل معنا</a>
+                <div class="flex justify-center items-center space-x-6 space-x-reverse">
+                    <a href="https://store.cheasy.finance" target="_blank" class="btn-primary text-lg inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        <span>تفضل بزيارة متجرنا</span>
+                    </a>
+                    <a href="mailto:h.ghamdi@gmail.com" class="btn-secondary text-lg inline-flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span>تواصل معنا</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -122,22 +128,10 @@
                     </p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="card fade-in-up">
-                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">تكاليف تسويق باهظة</h3>
-                        <p class="text-slate-600">المنافسة الشرسة ترفع تكلفة الإعلانات وتقلص هوامش الربح، مما يجعل النمو مكلفًا وغير مستدام.</p>
-                    </div>
-                    <div class="card fade-in-up" style="transition-delay: 100ms;">
-                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">انعدام الثقة</h3>
-                        <p class="text-slate-600">يعاني المستهلكون من تأخر الشحن، تفاوت جودة المنتجات، وصعوبة عمليات الإرجاع.</p>
-                    </div>
-                    <div class="card fade-in-up" style="transition-delay: 200ms;">
-                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">ولاء منخفض</h3>
-                        <p class="text-slate-600">العلاقة بين التاجر والعميل تنتهي بعد الشراء. لا توجد آلية فعالة لتحويل العملاء إلى شركاء.</p>
-                    </div>
-                    <div class="card fade-in-up" style="transition-delay: 300ms;">
-                        <h3 class="font-extrabold text-xl mb-2 text-slate-800">فجوة الويب 3.0</h3>
-                        <p class="text-slate-600">معظم مشاريع الكريبتو تفتقر إلى نماذج أعمال حقيقية وتدفقات نقدية، مما يجعلها معتمدة على المضاربة.</p>
-                    </div>
+                    <div class="card fade-in-up"><h3 class="font-extrabold text-xl mb-2 text-slate-800">تكاليف تسويق باهظة</h3><p class="text-slate-600">المنافسة الشرسة ترفع تكلفة الإعلانات وتقلص هوامش الربح، مما يجعل النمو مكلفًا وغير مستدام.</p></div>
+                    <div class="card fade-in-up" style="transition-delay: 100ms;"><h3 class="font-extrabold text-xl mb-2 text-slate-800">انعدام الثقة</h3><p class="text-slate-600">يعاني المستهلكون من تأخر الشحن، تفاوت جودة المنتجات، وصعوبة عمليات الإرجاع.</p></div>
+                    <div class="card fade-in-up" style="transition-delay: 200ms;"><h3 class="font-extrabold text-xl mb-2 text-slate-800">ولاء منخفض</h3><p class="text-slate-600">العلاقة بين التاجر والعميل تنتهي بعد الشراء. لا توجد آلية فعالة لتحويل العملاء إلى شركاء.</p></div>
+                    <div class="card fade-in-up" style="transition-delay: 300ms;"><h3 class="font-extrabold text-xl mb-2 text-slate-800">فجوة الويب 3.0</h3><p class="text-slate-600">معظم مشاريع الكريبتو تفتقر إلى نماذج أعمال حقيقية وتدفقات نقدية، مما يجعلها معتمدة على المضاربة.</p></div>
                 </div>
             </div>
         </section>
@@ -160,124 +154,143 @@
             </div>
         </section>
 
-        <!-- How it Works Section -->
-        <section id="how-it-works" class="py-20 section-bg-gray">
+        <!-- Analysis Section -->
+        <section id="analysis" class="py-20 section-bg-gray">
             <div class="container mx-auto px-6">
                 <div class="fade-in-up">
-                    <h2 class="section-title">آلية عمل محرك القيمة</h2>
-                    <p class="section-subtitle">دورة اقتصادية بسيطة وفعالة تضمن نمو قيمة الأصل الرقمي بشكل مستدام.</p>
+                    <h2 class="section-title">تحليل أعمق لنموذج العمل</h2>
+                    <p class="section-subtitle">لفهم قوة CHEASY الحقيقية، يجب تفكيك مكوناته الأساسية: ما يميزنا، وكيف تعمل آليات القيمة لدينا، ومن أين تأتي الإيرادات.</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-                    <div class="fade-in-up">
-                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-blue-100 text-blue-600 rounded-full text-4xl mb-4">🛒</div>
-                        <h3 class="font-extrabold text-lg mb-2">1. المبيعات</h3>
-                        <p class="text-slate-600">العملاء يشترون المنتجات من متجر CHEASY.</p>
+                <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                    <div class="card fade-in-up">
+                        <h3 class="font-extrabold text-2xl mb-4 text-slate-800">بماذا نتميز؟ (Our Unique Advantage)</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start"><span class="text-green-500 font-bold text-2xl ml-3">✓</span><p><strong>لسنا مشروع كريبتو، بل شركة تجارة إلكترونية تستخدم الكريبتو كأداة:</strong> قيمتنا تأتي من بيع منتجات حقيقية، والرمز هو آلية لمشاركة هذا النجاح مع المجتمع.</p></li>
+                            <li class="flex items-start"><span class="text-green-500 font-bold text-2xl ml-3">✓</span><p><strong>محرك قيمة تلقائي ومستمر:</strong> آلية الحرق تعمل كـ "ثقب أسود" اقتصادي، يسحب الرموز من التداول بشكل دائم مع كل دولار من الأرباح.</p></li>
+                            <li class="flex items-start"><span class="text-green-500 font-bold text-2xl ml-3">✓</span><p><strong>حل جذري لمشكلة الولاء:</strong> نحن نحول كل عميل إلى سفير للعلامة التجارية لأن نجاح المتجر ينعكس مباشرة على قيمة ما يملكونه.</p></li>
+                        </ul>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 150ms;">
-                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-green-100 text-green-600 rounded-full text-4xl mb-4">📈</div>
-                        <h3 class="font-extrabold text-lg mb-2">2. الأرباح</h3>
-                        <p class="text-slate-600">المتجر يحقق أرباحًا صافية من المبيعات.</p>
+                    <div class="card fade-in-up" style="transition-delay: 150ms;">
+                        <h3 class="font-extrabold text-2xl mb-4 text-slate-800">نموذج العمل وتدفقات الإيرادات</h3>
+                        <p class="text-slate-600 mb-4">نموذجنا المالي متنوع ومصمم للنمو المستدام عبر عدة مصادر:</p>
+                        <ul class="space-y-3 text-slate-600">
+                            <li>- هوامش مبيعات المنتجات (المصدر الرئيسي).</li>
+                            <li>- رسوم الشحن المحسّنة عبر شبكتنا اللوجستية المستقبلية (FBC).</li>
+                            <li>- اشتراكات الولاء المميزة (Premium Tiers).</li>
+                            <li>- رسوم سوق البائعين (Marketplace Fees) في المراحل المتقدمة.</li>
+                            <li>- عوائد الخزانة (Treasury Yield) من إدارة الأصول.</li>
+                        </ul>
                     </div>
-                    <div class="fade-in-up" style="transition-delay: 300ms;">
-                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-yellow-100 text-yellow-600 rounded-full text-4xl mb-4">🔄</div>
-                        <h3 class="font-extrabold text-lg mb-2">3. إعادة الشراء</h3>
-                        <p class="text-slate-600">25% من الأرباح تذهب لصندوق إعادة الشراء.</p>
-                    </div>
-                    <div class="fade-in-up" style="transition-delay: 450ms;">
-                        <div class="flex items-center justify-center h-20 w-20 mx-auto bg-red-100 text-red-600 rounded-full text-4xl mb-4">🔥</div>
-                        <h3 class="font-extrabold text-lg mb-2">4. الحرق</h3>
-                        <p class="text-slate-600">يتم شراء وحرق الرموز لزيادة ندرتها وقيمتها.</p>
+                </div>
+                <div class="fade-in-up">
+                    <h3 class="text-3xl font-extrabold text-center mb-6 text-slate-800">التحليل الرباعي (SWOT)</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="swot-card bg-green-50 border-r-4 border-green-500 fade-in-up"><h4 class="font-bold text-lg text-green-800 mb-2">نقاط القوة</h4><ul class="list-disc list-inside text-green-900 text-sm space-y-1"><li>نموذج اقتصادي يربط الأرباح الحقيقية بقيمة الرمز.</li><li>محرك ولاء قوي يحول العملاء إلى ملاك.</li><li>آلية انكماشية تزيد الندرة بشكل مستمر.</li><li>العمل في سوق التجارة الإلكترونية الضخم والمثبت.</li></ul></div>
+                        <div class="swot-card bg-red-50 border-r-4 border-red-500 fade-in-up" style="transition-delay: 100ms;"><h4 class="font-bold text-lg text-red-800 mb-2">نقاط الضعف</h4><ul class="list-disc list-inside text-red-900 text-sm space-y-1"><li>الاعتماد الكبير على التنفيذ الناجح للخطة اللوجستية.</li><li>تحديات تبني العملات الرقمية من قبل المستخدمين التقليديين.</li><li>المنافسة الشرسة في سوق التجارة الإلكترونية.</li></ul></div>
+                        <div class="swot-card bg-blue-50 border-r-4 border-blue-500 fade-in-up" style="transition-delay: 200ms;"><h4 class="font-bold text-lg text-blue-800 mb-2">الفرص</h4><ul class="list-disc list-inside text-blue-900 text-sm space-y-1"><li>النمو الهائل في اقتصاد الويب 3.0 وتقبله.</li><li>إمكانية التوسع الجغرافي السريع عبر نموذج الدروبشيبينغ.</li><li>بناء أول علامة تجارية عالمية مملوكة للمجتمع.</li><li>إطلاق منتجات حصرية (Cheasy Originals) بهوامش ربح أعلى.</li></ul></div>
+                        <div class="swot-card bg-yellow-50 border-r-4 border-yellow-500 fade-in-up" style="transition-delay: 300ms;"><h4 class="font-bold text-lg text-yellow-800 mb-2">التهديدات</h4><ul class="list-disc list-inside text-yellow-900 text-sm space-y-1"><li>التغيرات التنظيمية والقانونية في أسواق الكريبتو.</li><li>تقلبات السوق التي قد تؤثر على شهية المستثمرين.</li><li>ظهور منافسين يتبنون نماذج عمل مشابهة.</li></ul></div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Value Proposition Section -->
+        <section id="value-prop" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="fade-in-up">
+                    <h2 class="section-title">عرض القيمة للمستثمر</h2>
+                    <p class="section-subtitle">استثمارك في CHEASY يمنحك حصة مباشرة في محركين للقيمة: أرباح المتجر التشغيلية وعوائد الطرح الأولي للعملة.</p>
+                </div>
+                <div class="card mb-12 fade-in-up">
+                    <h3 class="text-2xl md:text-3xl font-extrabold text-center mb-6 text-slate-800">حاسبة العائد الاستثماري المحتمل (من أرباح المتجر)</h3>
+                    <p class="text-center text-slate-600 mb-6">أدخل إجمالي الأرباح السنوية المتوقعة للمتجر لترى حصتك كمستثمر. حصتك تمثل 30% من حصة الملاك البالغة 25% من صافي الأرباح.</p>
+                    <div class="max-w-md mx-auto">
+                        <label for="profitInput" class="block text-sm font-medium text-slate-700 mb-1">صافي أرباح المتجر السنوية (بالدولار)</label>
+                        <input type="number" id="profitInput" value="150000000" class="w-full p-3 border border-slate-300 rounded-lg text-lg text-center" placeholder="e.g., 150000000">
+                    </div>
+                    <div class="mt-8 text-center bg-blue-50 p-6 rounded-lg">
+                        <p class="text-slate-600 text-lg">حصتك السنوية المحتملة:</p>
+                        <p id="investorReturn" class="text-4xl font-extrabold text-blue-600 mt-2">$11,250,000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How it Works / Value Flow Section -->
+        <section id="how-it-works" class="py-20 section-bg-gray">
+            <div class="container mx-auto px-6">
+                <div class="fade-in-up">
+                    <h2 class="section-title">آلية تدفق القيمة</h2>
+                    <p class="section-subtitle">دورة اقتصادية بسيطة وفعالة تضمن ترجمة الأرباح التجارية إلى زيادة في ندرة وقيمة الأصل الرقمي.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-4 text-center">
+                    <div class="flex flex-col items-center fade-in-up"><div class="flex items-center justify-center h-20 w-20 mx-auto bg-blue-100 text-blue-600 rounded-full text-4xl mb-4">🛒</div><h3 class="font-extrabold text-lg mb-2">1. المبيعات</h3><p class="text-slate-600">العملاء يشترون المنتجات.</p></div>
+                    <div class="hidden md:flex items-center justify-center text-slate-300 text-4xl font-light">→</div>
+                    <div class="flex flex-col items-center fade-in-up" style="transition-delay: 150ms;"><div class="flex items-center justify-center h-20 w-20 mx-auto bg-green-100 text-green-600 rounded-full text-4xl mb-4">📈</div><h3 class="font-extrabold text-lg mb-2">2. الأرباح</h3><p class="text-slate-600">المتجر يحقق أرباحًا صافية.</p></div>
+                    <div class="hidden md:flex items-center justify-center text-slate-300 text-4xl font-light">→</div>
+                    <div class="flex flex-col items-center fade-in-up" style="transition-delay: 300ms;"><div class="flex items-center justify-center h-20 w-20 mx-auto bg-red-100 text-red-600 rounded-full text-4xl mb-4">🔥</div><h3 class="font-extrabold text-lg mb-2">3. الحرق</h3><p class="text-slate-600">25% من الأرباح تشتري وتحرق الرموز لزيادة ندرتها.</p></div>
+                </div>
+            </div>
+        </section>
         
+        <!-- Financials Section -->
+        <section id="financials" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="fade-in-up">
+                    <h2 class="section-title">التفاصيل المالية: التمويل والعملة</h2>
+                    <p class="section-subtitle">نظرة مفصلة على كيفية استخدام التمويل المطلوب واقتصاديات عملة CHEASY المصممة للنمو المستدام.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-up">
+                        <h3 class="text-2xl font-bold mb-4">استخدام التمويل: 2.5 مليون دولار للتسويق</h3>
+                        <p class="text-slate-600 mb-6">سيتم تخصيص الميزانية بدقة للوصول إلى مجتمع الكريبتو العالمي عبر قنوات متعددة لضمان أقصى تأثير ونجاح للاكتتاب.</p>
+                        <div class="chart-container"><canvas id="marketingChart"></canvas></div>
+                    </div>
+                    <div class="fade-in-up" style="transition-delay: 150ms;">
+                        <h3 class="text-2xl font-bold mb-4">اقتصاديات عملة $CHEASY</h3>
+                        <p class="text-slate-600 mb-6">تم تصميم اقتصاديات الرمز بعناية لتحقيق التوازن بين تمويل النمو، مكافأة الفريق، وضمان استقرار السوق على المدى الطويل.</p>
+                        <div class="chart-container"><canvas id="tokenomicsChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Roadmap Section -->
-        <section id="roadmap" class="py-20 bg-white">
+        <section id="roadmap" class="py-20 section-bg-gray">
             <div class="container mx-auto px-6">
                 <div class="fade-in-up">
                     <h2 class="section-title">خارطة الطريق الاستراتيجية</h2>
                     <p class="section-subtitle">خطتنا الطموحة تمتد على مراحل واضحة، بدءًا من إطلاق مشروع العملة الرقمية، وصولًا إلى النضج والتحول إلى منظمة لامركزية.</p>
                 </div>
                 <div class="relative timeline max-w-2xl mx-auto">
-                    <div class="timeline-item mb-12 fade-in-up">
-                        <div class="timeline-dot"></div>
-                        <div class="card">
-                            <h3 class="text-xl font-extrabold mb-1">المرحلة 1: الإطلاق وتأسيس السوق (2025)</h3>
-                            <p class="text-slate-600">إطلاق الرمز والمنصة التجارية (Beta)، وبناء مجتمع أولي قوي وتحقيق أول 50,000 حامل للرمز.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item mb-12 fade-in-up" style="transition-delay: 200ms;">
-                        <div class="timeline-dot"></div>
-                        <div class="card">
-                            <h3 class="text-xl font-extrabold mb-1">المرحلة 2: التوسع والبنية التحتية (2026-2027)</h3>
-                            <p class="text-slate-600">إطلاق أول مركز "Fulfilled by Cheasy" (FBC)، التوسع الجغرافي، وتفعيل المرحلة الأولى من الحوكمة المجتمعية (DAO).</p>
-                        </div>
-                    </div>
-                     <div class="timeline-item fade-in-up" style="transition-delay: 400ms;">
-                        <div class="timeline-dot"></div>
-                        <div class="card">
-                            <h3 class="text-xl font-extrabold mb-1">المرحلة 3: النضج والسيطرة على السوق (2028-2030)</h3>
-                            <p class="text-slate-600">إطلاق منتجات "Cheasy Originals" الحصرية، توسيع شبكة FBC عالميًا، والتحول إلى منظمة لامركزية بالكامل.</p>
-                        </div>
-                    </div>
+                    <div class="timeline-item mb-12 fade-in-up"><div class="timeline-dot"></div><div class="card"><h3 class="text-xl font-extrabold mb-1">المرحلة 1: الإطلاق وتأسيس السوق (2025)</h3><p class="text-slate-600">إطلاق الرمز والمنصة التجارية (Beta)، وبناء مجتمع أولي قوي وتحقيق أول 50,000 حامل للرمز.</p></div></div>
+                    <div class="timeline-item mb-12 fade-in-up" style="transition-delay: 200ms;"><div class="timeline-dot"></div><div class="card"><h3 class="text-xl font-extrabold mb-1">المرحلة 2: التوسع والبنية التحتية (2026-2027)</h3><p class="text-slate-600">إطلاق أول مركز "Fulfilled by Cheasy" (FBC)، التوسع الجغرافي، وتفعيل المرحلة الأولى من الحوكمة المجتمعية (DAO).</p></div></div>
+                    <div class="timeline-item fade-in-up" style="transition-delay: 400ms;"><div class="timeline-dot"></div><div class="card"><h3 class="text-xl font-extrabold mb-1">المرحلة 3: النضج والسيطرة على السوق (2028-2030)</h3><p class="text-slate-600">إطلاق منتجات "Cheasy Originals" الحصرية، توسيع شبكة FBC عالميًا، والتحول إلى منظمة لامركزية بالكامل.</p></div></div>
                 </div>
             </div>
         </section>
         
-        <!-- FAQ Section - NEW -->
-        <section id="faq" class="py-20 section-bg-gray">
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="fade-in-up">
                     <h2 class="section-title">الأسئلة الشائعة</h2>
                     <p class="section-subtitle">إجابات على أهم الأسئلة التي قد تهم المستثمرين في مشروعنا.</p>
                 </div>
                 <div class="max-w-3xl mx-auto space-y-4">
-                    <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200 fade-in-up">
-                        <details class="p-6">
-                            <summary class="flex justify-between items-center font-bold text-lg">
-                                ما الذي يجعل نموذج CHEASY مختلفًا عن مشاريع الكريبتو الأخرى؟
-                                <span class="arrow-down transition-transform duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                </span>
-                            </summary>
-                            <p class="mt-4 text-slate-600">الفرق الجوهري هو أن قيمة رمز CHEASY ليست مبنية على المضاربة، بل مدعومة بشكل مباشر بأرباح حقيقية من نشاط تجاري قائم (التجارة الإلكترونية). نحن شركة تجارة إلكترونية أولاً، ونستخدم الويب 3.0 كأداة قوية لمشاركة النجاح مع مجتمعنا، وليس العكس.</p>
-                        </details>
-                    </div>
-                    <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200 fade-in-up" style="transition-delay: 150ms;">
-                         <details class="p-6">
-                            <summary class="flex justify-between items-center font-bold text-lg">
-                                كيف تضمن آلية الحرق (Burn) زيادة قيمة الرمز؟
-                                <span class="arrow-down transition-transform duration-300">
-                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                </span>
-                            </summary>
-                            <p class="mt-4 text-slate-600">آلية الحرق تعمل على تقليل المعروض الكلي من الرموز بشكل دائم. مع كل عملية شراء وحرق، تصبح الرموز المتبقية أكثر ندرة. وفقًا لمبادئ الاقتصاد الأساسية، عندما يقل العرض لسلعة معينة مع بقاء الطلب ثابتًا أو زيادته، فإن قيمة هذه السلعة تميل إلى الارتفاع.</p>
-                        </details>
-                    </div>
-                    <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200 fade-in-up" style="transition-delay: 300ms;">
-                         <details class="p-6">
-                            <summary class="flex justify-between items-center font-bold text-lg">
-                                ما هي المخاطر الرئيسية للاستثمار في المشروع؟
-                                <span class="arrow-down transition-transform duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-                                </span>
-                            </summary>
-                            <p class="mt-4 text-slate-600">مثل أي استثمار، توجد مخاطر. المخاطر الرئيسية تشمل: 1) مخاطر التنفيذ المتعلقة بنجاح الخطط التسويقية واللوجستية. 2) مخاطر السوق والمنافسة الشرسة في قطاع التجارة الإلكترونية. 3) المخاطر التنظيمية المتعلقة بسوق العملات الرقمية. نحن نعمل على خطط استراتيجية لمواجهة كل هذه التحديات.</p>
-                        </details>
-                    </div>
+                    <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200 fade-in-up"><details class="p-6"><summary class="flex justify-between items-center font-bold text-lg">ما الذي يجعل نموذج CHEASY مختلفًا عن مشاريع الكريبتو الأخرى؟<span class="arrow-down transition-transform duration-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></summary><p class="mt-4 text-slate-600">الفرق الجوهري هو أن قيمة رمز CHEASY ليست مبنية على المضاربة، بل مدعومة بشكل مباشر بأرباح حقيقية من نشاط تجاري قائم. نحن شركة تجارة إلكترونية أولاً، ونستخدم الويب 3.0 كأداة قوية لمشاركة النجاح مع مجتمعنا.</p></details></div>
+                    <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200 fade-in-up" style="transition-delay: 150ms;"><details class="p-6"><summary class="flex justify-between items-center font-bold text-lg">كيف تضمن آلية الحرق (Burn) زيادة قيمة الرمز؟<span class="arrow-down transition-transform duration-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></summary><p class="mt-4 text-slate-600">آلية الحرق تقلل المعروض الكلي من الرموز بشكل دائم. مع كل عملية حرق، تصبح الرموز المتبقية أكثر ندرة. وفقًا لمبادئ الاقتصاد، عندما يقل العرض لسلعة معينة مع بقاء الطلب ثابتًا أو زيادته، فإن قيمتها تميل إلى الارتفاع.</p></details></div>
+                    <div class="faq-item bg-white rounded-lg shadow-sm border border-slate-200 fade-in-up" style="transition-delay: 300ms;"><details class="p-6"><summary class="flex justify-between items-center font-bold text-lg">ما هي المخاطر الرئيسية للاستثمار في المشروع؟<span class="arrow-down transition-transform duration-300"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg></span></summary><p class="mt-4 text-slate-600">المخاطر الرئيسية تشمل: 1) مخاطر التنفيذ المتعلقة بنجاح الخطط التسويقية واللوجستية. 2) مخاطر السوق والمنافسة في قطاع التجارة الإلكترونية. 3) المخاطر التنظيمية المتعلقة بسوق العملات الرقمية. نعمل على خطط استراتيجية لمواجهة هذه التحديات.</p></details></div>
                 </div>
             </div>
         </section>
 
         <!-- Contact/CTA Section -->
-        <section id="contact" class="py-20 bg-white">
+        <section id="contact" class="py-20 section-bg-gray">
             <div class="container mx-auto px-6 text-center">
                 <div class="max-w-4xl mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-10 md:p-16 shadow-2xl fade-in-up">
                     <h2 class="text-3xl md:text-5xl font-black text-white mb-4">هل أنت مستعد لتكون جزءًا من المستقبل؟</h2>
-                    <p class="text-lg md:text-xl text-slate-300 mb-8">
-                        أنت لا تستثمر في مجرد فكرة، بل في أصل رقمي مصمم لتزداد ندرته مع كل دولار من الأرباح. استثمر في مشروع عملة رقمية له أساس حقيقي.
-                    </p>
+                    <p class="text-lg md:text-xl text-slate-300 mb-8">أنت لا تستثمر في مجرد فكرة، بل في أصل رقمي مصمم لتزداد ندرته مع كل دولار من الأرباح. استثمر في مشروع عملة رقمية له أساس حقيقي.</p>
                     <a href="mailto:h.ghamdi@gmail.com" class="btn-primary text-lg">انضم إلينا في هذه الرحلة - تواصل معنا</a>
                 </div>
             </div>
@@ -296,18 +309,53 @@
         document.addEventListener('DOMContentLoaded', function () {
             
             // --- Chart.js Configuration ---
-            const chartDefaultOptions = { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom', labels: { font: { family: 'Tajawal', size: 14 }, color: '#475569', padding: 20, boxWidth: 12, usePointStyle: true, } }, tooltip: { bodyFont: { family: 'Tajawal' }, titleFont: { family: 'Tajawal' }, } } };
-            const chartColors = ['#2563eb', '#0d9488', '#f59e0b', '#4f46e5', '#e11d48'];
-            // This part of the script for charts and calculator is omitted for brevity as it remains unchanged.
-            // ROI Calculator, Scroll Animations, Header Scroll Effect, and Active Nav Link scripts are also unchanged.
+            const chartDefaultOptions = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } };
+            const chartColors = ['#3b82f6', '#14b8a6', '#f59e0b', '#6366f1', '#f43f5e'];
+
+            // Marketing Chart
+            const marketingCtx = document.getElementById('marketingChart')?.getContext('2d');
+            if(marketingCtx) {
+                new Chart(marketingCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['المؤثرين والإعلام (45%)', 'منصات الإطلاق (20%)', 'بناء المجتمع (15%)', 'الإعلانات الرقمية (15%)', 'الفعاليات العالمية (5%)'],
+                        datasets: [{ data: [45, 20, 15, 15, 5], backgroundColor: chartColors, borderColor: '#fff', borderWidth: 4 }]
+                    },
+                    options: chartDefaultOptions
+                });
+            }
+
+            // Tokenomics Chart
+            const tokenomicsCtx = document.getElementById('tokenomicsChart')?.getContext('2d');
+            if(tokenomicsCtx) {
+                new Chart(tokenomicsCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['التسويق والمجتمع (40%)', 'الطرح الأولي (30%)', 'الفريق (15%)', 'السيولة (10%)', 'طوارئ (5%)'],
+                        datasets: [{ data: [40, 30, 15, 10, 5], backgroundColor: chartColors, borderColor: '#fff', borderWidth: 4 }]
+                    },
+                    options: chartDefaultOptions
+                });
+            }
+
+            // --- ROI Calculator ---
+            const profitInput = document.getElementById('profitInput');
+            const investorReturnEl = document.getElementById('investorReturn');
+            const calculateReturn = () => {
+                if(!profitInput || !investorReturnEl) return;
+                const profit = parseFloat(profitInput.value) || 0;
+                const ownersShare = profit * 0.25;
+                const investorShare = ownersShare * 0.30;
+                investorReturnEl.textContent = '$' + investorShare.toLocaleString('en-US', { maximumFractionDigits: 0 });
+            };
+            profitInput?.addEventListener('input', calculateReturn);
+            calculateReturn(); // Initial calculation
 
             // --- Scroll Animations ---
             const animatedElements = document.querySelectorAll('.fade-in-up');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
                 });
             }, { threshold: 0.1 });
             animatedElements.forEach(el => observer.observe(el));
@@ -336,7 +384,6 @@
                     }
                 });
             });
-
         });
     </script>
 </body>
