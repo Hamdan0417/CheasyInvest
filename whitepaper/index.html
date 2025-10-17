@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورقة بيضاء CHEASY - التجارة الإلكترونية المدعومة بالويب 3</title>
+    <meta name="description" content="ورقة بيضاء تفصيلية لمشروع CHEASY قبل الإطلاق، توضح الرؤية، البنية التقنية، خارطة الطريق، إدارة المخاطر، والحوكمة للمنصة التي تمزج التجارة الإلكترونية مع الأصول الرقمية.">
+    <meta name="keywords" content="CHEASY, ورقة بيضاء, تجارة إلكترونية, ويب 3, رمز رقمي, خطة عمل, خارطة طريق">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0b1120;
+            color: #e2e8f0;
+        }
+        header {
+            background: radial-gradient(circle at top right, rgba(59,130,246,0.35), transparent 55%), #0f172a;
+            border-bottom: 1px solid rgba(148,163,184,0.2);
+        }
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 4rem;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            font-weight: 900;
+            color: #f8fafc;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cbd5f5;
+            max-width: 52rem;
+        }
+        .section-card {
+            background: rgba(15,23,42,0.85);
+            border: 1px solid rgba(148,163,184,0.18);
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            backdrop-filter: blur(12px);
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f8fafc;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 4.5rem;
+            height: 4px;
+            background: linear-gradient(90deg, #2563eb, #38bdf8);
+            border-radius: 999px;
+        }
+        .section-body {
+            color: #cbd5f5;
+            line-height: 1.9;
+            font-size: 1.05rem;
+        }
+        .section-body strong { color: #f1f5f9; }
+        .key-highlight {
+            border-right: 4px solid #38bdf8;
+            padding: 1.25rem 1.5rem;
+            background: rgba(30,41,59,0.85);
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .toc {
+            display: grid;
+            gap: 1rem;
+        }
+        .toc a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: rgba(15,23,42,0.7);
+            border: 1px solid rgba(148,163,184,0.18);
+            color: #e2e8f0;
+            border-radius: 1rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .toc a span {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+        .toc a:hover {
+            transform: translateY(-4px);
+            border-color: rgba(59,130,246,0.5);
+        }
+        .metric-grid {
+            display: grid;
+            gap: 1rem;
+        }
+        .metric-card {
+            background: rgba(30,41,59,0.85);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(148,163,184,0.2);
+        }
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+        .risk-grid {
+            display: grid;
+            gap: 1.25rem;
+        }
+        .risk-card {
+            background: rgba(15,23,42,0.75);
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(248,113,113,0.35);
+        }
+        .risk-card h4 {
+            font-weight: 700;
+            color: #fca5a5;
+            margin-bottom: 0.75rem;
+        }
+        .roadmap-item {
+            border-right: 3px solid rgba(56,189,248,0.55);
+            padding-right: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .roadmap-item::before {
+            content: "";
+            position: absolute;
+            top: 0.4rem;
+            right: -1.05rem;
+            width: 0.85rem;
+            height: 0.85rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #38bdf8, #2563eb);
+            box-shadow: 0 0 0 4px rgba(56,189,248,0.25);
+        }
+        .footer {
+            border-top: 1px solid rgba(148,163,184,0.2);
+            padding: 2rem 0;
+            text-align: center;
+            color: #94a3b8;
+        }
+        @media (min-width: 768px) {
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.25rem; }
+            .toc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .risk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (min-width: 1024px) {
+            .metric-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky top-0 z-40">
+        <div class="content py-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div>
+                <a href="/" class="text-2xl font-extrabold text-sky-300">CHEASY</a>
+                <p class="text-sm text-slate-400 mt-1">ورقة بيضاء تحضيرية - آخر تحديث: مايو 2024</p>
+            </div>
+            <div class="flex flex-wrap gap-3 text-sm">
+                <a href="/" class="px-4 py-2 rounded-full bg-slate-900/60 border border-slate-700 text-slate-200 hover:border-sky-400 transition">العودة إلى الموقع الرئيسي</a>
+                <a href="#toc" class="px-4 py-2 rounded-full border border-sky-500/60 text-sky-200 hover:bg-sky-500/10 transition">انتقال سريع</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="section-card" id="overview">
+            <h1 class="hero-title mb-6">CHEASY: منظومة تجارة إلكترونية مدعومة بالويب 3 قبل الإطلاق</h1>
+            <p class="hero-subtitle mb-8">
+                تصف هذه الورقة البيضاء الرؤية الاستراتيجية لـ CHEASY في مرحلة ما قبل الإطلاق، بهدف الجمع بين تجربة التجارة الإلكترونية التقليدية وخصائص الرموز الرقمية القابلة للترقية. كل الأرقام المذكورة تقديرية ولا تعكس مبيعات فعلية أو عوائد حالية؛ ما زلنا في مرحلة التطوير وجمع الاهتمام الاستثماري الأولي.
+            </p>
+            <div class="key-highlight">
+                <p class="text-slate-100 font-semibold mb-2">رسالة أساسية للمستثمرين المهتمين:</p>
+                <ul class="list-disc pr-6 text-slate-200 space-y-2">
+                    <li>لا توجد مبيعات جارية أو رمز رقمي متداول حتى الآن؛ نركز على بناء البنية التحتية والامتثال.</li>
+                    <li>هدفنا هو إطلاق متجر إلكتروني متكامل وربطه بمحفظة أصول رقمية بعد التحقق من النموذج التشغيلي.</li>
+                    <li>هذه الوثيقة توضح الفرص، المخاطر، وتفاصيل التنفيذ لضمان رؤية شاملة قبل الالتزام المالي.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" id="toc">
+            <h2 class="section-title">جدول المحتويات</h2>
+            <div class="toc">
+                <a href="#problem">1. المشكلة والفرصة<span>سياق السوق</span></a>
+                <a href="#vision">2. الرؤية والأهداف<span>مؤشرات النجاح الرئيسية</span></a>
+                <a href="#market">3. تحليل السوق المستهدف<span>مقاطع العملاء</span></a>
+                <a href="#architecture">4. البنية التقنية ومنتجات المنصة<span>طبقات الحل</span></a>
+                <a href="#tokenomics">5. الإطار الرمزي والمالية المستقبلية<span>افتراضات ما قبل الإطلاق</span></a>
+                <a href="#go-to-market">6. استراتيجية التنفيذ والتشغيل<span>المراحل التشغيلية</span></a>
+                <a href="#roadmap">7. خارطة الطريق المرحلية<span>المعالم المخطط لها</span></a>
+                <a href="#risks">8. إدارة المخاطر والامتثال<span>إطار الحوكمة</span></a>
+                <a href="#community">9. بناء المجتمع والشراكات<span>برامج المشاركة</span></a>
+                <a href="#appendix">10. الملاحق والتعريفات<span>مصطلحات وأسئلة متكررة</span></a>
+            </div>
+        </section>
+
+        <section class="section-card" id="problem">
+            <h2 class="section-title">1. المشكلة والفرصة</h2>
+            <div class="section-body space-y-4">
+                <p>يشهد قطاع التجارة الإلكترونية نمواً متسارعاً في الشرق الأوسط وشمال أفريقيا، لكنه لا يزال منغلقاً على أدوات دفع تقليدية، بينما يبحث المستثمرون في عالم الأصول الرقمية عن أصول مدعومة بتدفقات نقدية حقيقية. الفجوة تتمثل في غياب منصة موثوقة تربط بين التجارة الواقعية وأصول الويب 3 بطريقة ممتثلة وشفافة.</p>
+                <p>وفقاً لتقارير سوقية لعام 2023، تجاوز حجم التجارة الإلكترونية في المنطقة <strong>40 مليار دولار</strong> مع نمو سنوي مركب متوقع بنسبة 17%. في المقابل، يقدّر حجم الاستثمارات في الأصول الرقمية المرتبطة بأعمال واقعية بأقل من 2% من إجمالي السوق، ما يشير لفرصة كبيرة للبناء على الثقة والتكامل.</p>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-value">17%</div>
+                        <p class="text-slate-300 text-sm">نسبة النمو السنوي المتوقع للتجارة الإلكترونية الإقليمية (مصادر بحوث السوق 2023)</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">&lt;2%</div>
+                        <p class="text-slate-300 text-sm">حصة حلول الويب 3 المرتبطة بتدفقات نقدية واقعية من إجمالي الاستثمارات الرقمية</p>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value">+68%</div>
+                        <p class="text-slate-300 text-sm">ارتفاع الاهتمام المؤسسي بالأصول الرقمية المدعومة بتشغيل فعلي خلال عام 2023</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card" id="vision">
+            <h2 class="section-title">2. الرؤية والأهداف</h2>
+            <div class="section-body space-y-4">
+                <p>رؤيتنا هي إنشاء منظومة تجارة إلكترونية تعتمد على مبادئ الشفافية، المشاركة في القيمة، والحوكمة المجتمعية، بحيث تُمكّن المستثمرين من امتلاك أصول رقمية مدعومة بأداء متجر إلكتروني حقيقي.</p>
+                <ul class="list-disc pr-6 space-y-2">
+                    <li><strong>الهدف الاستراتيجي على المدى المتوسط:</strong> إطلاق متجر يقدم منتجات مبتكرة عالية الطلب محلياً، مع دمج محفظة رمزية مرتبطة بالأداء المالي بعد إثبات الجدوى التشغيلية.</li>
+                    <li><strong>مؤشرات النجاح:</strong> بناء قاعدة انتظار لا تقل عن 15 ألف عميل، عقد شراكات لوجستية مع 3 مزودين إقليميين، وبلوغ معدل رضا مجتمعي يتجاوز 85% في استبيانات ما قبل الإطلاق.</li>
+                    <li><strong>مبادئ التأسيس:</strong> الامتثال التنظيمي، حماية المستهلك، قابلية التوسع التقني، والشفافية المستمرة مع أصحاب المصلحة.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-card" id="market">
+            <h2 class="section-title">3. تحليل السوق المستهدف</h2>
+            <div class="section-body space-y-4">
+                <p>يستهدف CHEASY ثلاث شرائح رئيسية: مستهلكو التجارة الإلكترونية الباحثون عن منتجات ذات قيمة مضافة، مستثمرو الويب 3 الذين يرغبون في ربط المحافظ الرقمية بتدفقات نقدية مستقبلية، وشركاء سلسلة الإمداد الراغبون في دخول منظومة رقمية متكاملة.</p>
+                <p>نقوم حالياً بجمع بيانات السوق عبر مقابلات نوعية، نماذج اهتمام، وشراكات مع مراكز ابتكار في المنطقة. تُستخدم هذه البيانات لتطوير فرضيات الطلب وتحديد القطاعات الرئيسية للمنتجات (الإلكترونيات الخفيفة، منتجات العناية الشخصية، منتجات رقمية مرخصة).</p>
+                <p>سيتواصل الفريق مع الجهات التنظيمية لضمان توافق النموذج التجاري مع المتطلبات المحلية، خاصة فيما يتعلق بعمليات الدفع، حماية البيانات، وإصدار الأصول الرقمية المستقبلية.</p>
+            </div>
+        </section>
+
+        <section class="section-card" id="architecture">
+            <h2 class="section-title">4. البنية التقنية ومنتجات المنصة</h2>
+            <div class="section-body space-y-4">
+                <p>تقوم بنية CHEASY على ثلاث طبقات مترابطة لضمان تجربة سلسة ومأمونة للمستهلكين والمستثمرين:</p>
+                <ol class="list-decimal pr-6 space-y-3">
+                    <li><strong>طبقة التجربة (Experience Layer):</strong> واجهة متجر إلكتروني متعددة اللغات تدعم تجارب مخصصة، بوابة تفاعل للمستثمرين، ولوحة بيانات تلخص مؤشرات الأداء الرئيسية عند الإطلاق الرسمي.</li>
+                    <li><strong>طبقة العمليات (Operations Layer):</strong> نظام إدارة منتجات، تكاملات لوجستية، ونظام إدارة علاقات العملاء. يتم حالياً اختبار موفّري خدمات خارجيين وتوثيق عمليات التوريد والتسليم.</li>
+                    <li><strong>طبقة البنية اللامركزية (Web3 Infrastructure):</strong> عقود ذكية ستُطوّر لاحقاً لتتبع الإيرادات والتحويلات، مع الالتزام الكامل بإجراءات معرفة العميل (KYC) ومكافحة غسل الأموال (AML) قبل أي إطلاق رمزي.</li>
+                </ol>
+                <p>سنستخدم بيئة سحابية مرنة لاستضافة الخدمات الأساسية، مع توزيع الحِمل وتدابير أمان متقدمة مثل إدارة المفاتيح، مراقبة التهديدات، وخطط استعادة الكوارث.</p>
+            </div>
+        </section>
+
+        <section class="section-card" id="tokenomics">
+            <h2 class="section-title">5. الإطار الرمزي والمالية المستقبلية</h2>
+            <div class="section-body space-y-4">
+                <p>لم يتم إطلاق أي رمز خاص بـ CHEASY حتى الآن. أي معلومات واردة في هذا القسم تُعد نموذجاً أولياً قد يخضع للتعديل بعد الحصول على الموافقات التنظيمية اللازمة وإجراء دراسات أعمق.</p>
+                <ul class="list-disc pr-6 space-y-2">
+                    <li><strong>الاسم الرمزي المقترح:</strong> CHEASY Token (CHZ).</li>
+                    <li><strong>الوظائف الأساسية بعد الإطلاق:</strong> توزيع الأرباح المستقبلية، خصومات على المشتريات، وتصويت على القرارات الاستراتيجية ضمن حدود تنظيمية واضحة.</li>
+                    <li><strong>سياسات التوزيع المقترحة:</strong> 40% لصندوق المجتمع والحوافز، 25% للشركاء الاستراتيجيين، 20% للفريق (مجمّدة لأربع سنوات)، 15% للاكتتاب الخاص المتوافق مع القوانين المحلية.</li>
+                    <li><strong>اعتماد الأرباح:</strong> سيتم تمويل الخزينة من صافي أرباح المتجر بعد خصم التكاليف التشغيلية والاحتياطيات القانونية. لا توجد أرباح حالياً حتى إطلاق التشغيل الكامل.</li>
+                </ul>
+                <p>نعمل على إعداد سياسات مالية تضمن التدقيق الدوري، الشفافية في نشر البيانات، وآليات حماية المستثمرين. ستُشارك مسودات العقود الذكية مع مدققين خارجيين قبل الإطلاق.</p>
+            </div>
+        </section>
+
+        <section class="section-card" id="go-to-market">
+            <h2 class="section-title">6. استراتيجية التنفيذ والتشغيل</h2>
+            <div class="section-body space-y-4">
+                <p>تسير خطة التنفيذ على ثلاث مراحل لضمان بناء متدرج:</p>
+                <div class="roadmap-item">
+                    <h3 class="text-xl font-bold text-sky-200 mb-2">المرحلة الأولى: التأسيس (الربع الثالث 2024)</h3>
+                    <p>التركيز على دراسات السوق، بناء النموذج المالي، توثيق سياسات الامتثال، وبناء قاعدة البيانات الأساسية للعملاء المحتملين.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3 class="text-xl font-bold text-sky-200 mb-2">المرحلة الثانية: التطوير والاختبار المغلق (الربع الرابع 2024 - الربع الأول 2025)</h3>
+                    <p>تطوير الواجهة الأمامية، تكامل العمليات اللوجستية، إطلاق نسخة تجريبية مغلقة، وبدء فحص التوافق التنظيمي للرموز الرقمية.</p>
+                </div>
+                <div class="roadmap-item">
+                    <h3 class="text-xl font-bold text-sky-200 mb-2">المرحلة الثالثة: الإطلاق التدريجي (بعد الموافقات)</h3>
+                    <p>فتح المتجر تدريجياً، مراقبة الأداء المالي، إطلاق الرمز للمستثمرين المؤهلين، ثم توسيع المجتمع عالميًا.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card" id="roadmap">
+            <h2 class="section-title">7. خارطة الطريق المرحلية</h2>
+            <div class="section-body space-y-4">
+                <p>يُعرض أدناه جدول زمني تفصيلي يخضع للتحديث المستمر:</p>
+                <div class="space-y-3 text-slate-200">
+                    <div class="roadmap-item">
+                        <h4 class="font-semibold">مايو - يوليو 2024</h4>
+                        <p>استكمال دراسات السوق، بناء الفريق الاستشاري، وتوقيع مذكرات تفاهم مع شركاء لوجستيين.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <h4 class="font-semibold">أغسطس - أكتوبر 2024</h4>
+                        <p>إطلاق منصة تجريبية داخلية، اختبار تجربة المستخدم، إنشاء منظومة إدارة المنتجات والدفع.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <h4 class="font-semibold">نوفمبر 2024 - فبراير 2025</h4>
+                        <p>الحصول على الموافقات التنظيمية، بدء برنامج العملاء الأوائل، إطلاق لوحة متابعة الأداء للمستثمرين.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <h4 class="font-semibold">ما بعد فبراير 2025</h4>
+                        <p>إطلاق تجاري مبدئي، تقارير شفافة ربع سنوية، والتقييم المستمر لجدوى إطلاق الرمز على نطاق أوسع.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card" id="risks">
+            <h2 class="section-title">8. إدارة المخاطر والامتثال</h2>
+            <div class="section-body space-y-4">
+                <p>إدراك المخاطر جزء أساسي من إستراتيجية CHEASY. نعمل على إطار حوكمة يوازن بين الابتكار والحماية القانونية:</p>
+                <div class="risk-grid">
+                    <div class="risk-card">
+                        <h4>مخاطر تنظيمية</h4>
+                        <p>العمل ضمن بيئات تنظيمية متعددة يتطلب استشارات قانونية مستمرة، تنفيذ سياسات KYC/AML، والالتزام بلوائح حماية المستهلك.</p>
+                    </div>
+                    <div class="risk-card">
+                        <h4>مخاطر تشغيلية</h4>
+                        <p>يشمل ذلك مراقبة جودة المنتجات، إدارة المخزون، وتوفير دعم عملاء عالي المستوى. يتم تصميم بروتوكولات تشغيل واضحة وتدريب الفريق عليها.</p>
+                    </div>
+                    <div class="risk-card">
+                        <h4>مخاطر أمن المعلومات</h4>
+                        <p>سيتم تطبيق ممارسات أمان سحابي متقدمة، تشفير للبيانات، واختبارات اختراق دورية قبل إطلاق أي خدمات للجمهور.</p>
+                    </div>
+                    <div class="risk-card">
+                        <h4>مخاطر السوق والطلب</h4>
+                        <p>ستتم مراجعة فرضيات الطلب كل ربع، مع إمكانية تعديل العرض، أو الجدول الزمني للإطلاق بناءً على التغذية الراجعة.</p>
+                    </div>
+                </div>
+                <p>يُنشأ مجلس حوكمة مكوّن من مستشارين مستقلين لمراقبة الأداء وتقديم توصيات حول أي خطوات مالية أو رمزية.</p>
+            </div>
+        </section>
+
+        <section class="section-card" id="community">
+            <h2 class="section-title">9. بناء المجتمع والشراكات</h2>
+            <div class="section-body space-y-4">
+                <p>يركز CHEASY على بناء مجتمع ما قبل الإطلاق من خلال نشرات دورية، جلسات AMA افتراضية، وشراكات مع مسرعات أعمال تدعم رواد الأعمال في مجال الويب 3. سيتم تقديم برامج مكافآت غير نقدية (مثل الوصول المبكر للمتجر أو محتوى تعليمي) حتى يتم إطلاق الرمز رسميًا.</p>
+                <p>تُخطط الشركة لإنشاء برنامج سفراء للعلامة يهدف إلى جمع قصص المستخدمين الأوائل وتطوير محتوى تعليمي حول التجارة الهجينة، مع توفير حوافز تعتمد على الأداء وليس على مبيعات غير موجودة حالياً.</p>
+            </div>
+        </section>
+
+        <section class="section-card" id="appendix">
+            <h2 class="section-title">10. الملاحق والتعريفات</h2>
+            <div class="section-body space-y-4">
+                <h3 class="text-xl font-bold text-sky-200">ملحق (أ): الافتراضات المالية الأولية</h3>
+                <ul class="list-disc pr-6 space-y-2">
+                    <li>متوسط قيمة الطلب المتوقع بعد الإطلاق: 62 دولار أمريكي.</li>
+                    <li>هامش الربح الإجمالي المستهدف: 28% خلال أول 12 شهرًا.</li>
+                    <li>تكاليف التشغيل الشهرية التقديرية: 45 ألف دولار تشمل الرواتب، التقنية، والتسويق.</li>
+                </ul>
+                <h3 class="text-xl font-bold text-sky-200">ملحق (ب): المصطلحات</h3>
+                <dl class="grid gap-3">
+                    <div>
+                        <dt class="font-semibold text-slate-100">الرمز الرقمي (Token)</dt>
+                        <dd>أداة رقمية مبنية على تقنية البلوكتشين تمثل قيمة أو حقاً معيناً. لم يتم إصدار أي رمز لـ CHEASY حتى الآن.</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-100">الامتثال (Compliance)</dt>
+                        <dd>مجموعة الإجراءات التي تضمن التزام المشروع بالقوانين واللوائح المحلية والدولية.</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-slate-100">KYC/AML</dt>
+                        <dd>معرفة العميل ومكافحة غسل الأموال؛ متطلبات ضرورية قبل إطلاق أي رمز أو برنامج استثماري.</dd>
+                    </div>
+                </dl>
+                <h3 class="text-xl font-bold text-sky-200">ملحق (ج): الأسئلة المتكررة</h3>
+                <div class="space-y-3">
+                    <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-4">
+                        <h4 class="font-semibold text-slate-100">هل هناك موعد محدد لإطلاق المتجر؟</h4>
+                        <p>لم يتم تحديد تاريخ نهائي بعد. يعتمد الإطلاق على اكتمال الاختبارات، الشراكات، والموافقات التنظيمية.</p>
+                    </div>
+                    <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-4">
+                        <h4 class="font-semibold text-slate-100">هل يمكن الاستثمار الآن؟</h4>
+                        <p>لا نقبل أي استثمارات عامة أو مبيعات رمزية في الوقت الحالي. يتم فتح قنوات التواصل مع المستثمرين المعتمدين فقط بعد استكمال المتطلبات القانونية.</p>
+                    </div>
+                    <div class="bg-slate-900/70 border border-slate-700 rounded-xl p-4">
+                        <h4 class="font-semibold text-slate-100">كيف يمكن متابعة التحديثات؟</h4>
+                        <p>يمكن الانضمام إلى قائمة الانتظار عبر الموقع الرئيسي، كما سنوفر نشرات بريدية وتقارير دورية بعد تقدم مراحل التطوير.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2 class="section-title">ختام</h2>
+            <div class="section-body space-y-4">
+                <p>تعمل CHEASY على تأسيس معيار جديد للتكامل بين التجارة الإلكترونية والأصول الرقمية. هذه الورقة البيضاء هي دعوة للحوار والشراكات المسؤولة قبل اتخاذ أي قرار استثماري. نرحب بالاستفسارات، المقترحات، وشركاء الخبرة الذين يشاركوننا قيم الشفافية والابتكار.</p>
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <a href="mailto:hello@cheasy.finance" class="inline-flex items-center justify-center px-6 py-3 rounded-full bg-sky-500 text-slate-900 font-semibold hover:bg-sky-400 transition">مراسلتنا للمزيد من التفاصيل</a>
+                    <a href="/" class="inline-flex items-center justify-center px-6 py-3 rounded-full border border-slate-600 text-slate-200 hover:border-sky-400 transition">العودة إلى صفحة الهبوط</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2024 CHEASY. جميع الحقوق محفوظة. لا تمثل هذه الوثيقة عرضاً للبيع أو طلباً لشراء أي أوراق مالية أو أصول رقمية.</p>
+    </footer>
+</body>
+</html>
