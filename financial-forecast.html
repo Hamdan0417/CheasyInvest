@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التوقعات المالية | CHEASY</title>
+    <meta name="description" content="استكشف لوحة التوقعات المالية لمشروع CHEASY بما في ذلك ركائز الاستراتيجية، التوقعات التفاعلية، اقتصاديات التوكن، والافتراضات الرئيسية." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #111827;
+            color: #F9FAFB;
+        }
+        .chartjs-tooltip {
+            background: rgba(31, 41, 55, 0.8) !important;
+            color: white !important;
+            border-radius: 8px !important;
+        }
+        .chartjs-legend-text {
+            color: #D1D5DB !important;
+        }
+        .tab-active {
+            background-color: #3B82F6;
+            color: white;
+        }
+        .tab-inactive {
+            background-color: #374151;
+            color: #D1D5DB;
+        }
+        .tab-btn,
+        .scenario-btn {
+            background-color: #374151;
+            color: #D1D5DB;
+        }
+        .stat-card {
+            background-color: #1F2937;
+            border: 1px solid #374151;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+        }
+        .table-scroll {
+            overflow-x: auto;
+        }
+        .table-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .table-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(107, 114, 128, 0.7);
+            border-radius: 9999px;
+        }
+        a:focus-visible {
+            outline: 2px solid rgba(59, 130, 246, 0.6);
+            outline-offset: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-gray-900/70 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-800">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="./" class="text-2xl font-bold text-white">CHEASY</a>
+            <div class="hidden md:flex items-center space-x-reverse space-x-4 text-sm">
+                <a href="#strategy" class="text-gray-300 hover:text-blue-400">الركائز</a>
+                <a href="#projections" class="text-gray-300 hover:text-blue-400">التوقعات</a>
+                <a href="#tokenomics" class="text-gray-300 hover:text-blue-400">اقتصاديات التوكن</a>
+                <a href="#assumptions" class="text-gray-300 hover:text-blue-400">الافتراضات</a>
+                <a href="whitepaper/" class="text-gray-300 hover:text-blue-400">الورقة البيضاء</a>
+            </div>
+            <a href="whitepaper/" class="md:hidden text-sm text-blue-400">الورقة البيضاء</a>
+        </nav>
+    </header>
+    <main class="container mx-auto px-6 py-12">
+        <section class="text-center mb-16">
+            <p class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/40 text-blue-200 text-sm mb-6">تصور تقديري — مرحلة ما قبل الإطلاق</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">مستقبل مالي مشترك: العميل هو الشريك</h1>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                نقدم نموذجًا ماليًا مبتكرًا يربط نجاح المتجر مباشرةً بقيمة أصول عملائنا ومستثمرينا. من خلال آلية حرق شفافة وتوزيع عادل للأرباح، نحن لا نبني متجرًا فحسب، بل نبني اقتصادًا متكاملًا ينمو مع مجتمعه.
+            </p>
+        </section>
+        <section id="strategy" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-10">ركائزنا الاستراتيجية</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stat-card text-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-500/10 text-blue-400 mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">مزيج دفع مبتكر</h3>
+                    <p class="text-gray-400">قبول العملات الرقمية (Crypto) يخفض رسوم المعاملات تدريجيًا، مما يزيد من هامش الربح ويوجه سيولة أكبر لآلية حرق التوكن، لتعظيم القيمة للجميع.</p>
+                </div>
+                <div class="stat-card text-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-emerald-500/10 text-emerald-400 mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">حوافز لجميع الأطراف</h3>
+                    <p class="text-gray-400">نموذجنا يضمن استفادة المتسوقين والمستثمرين والمطورين. من تجربة تسوق أقل تكلفة إلى ميزانيات تطوير مستقرة وعوائد استثمارية مرتبطة بالنمو الحقيقي.</p>
+                </div>
+                <div class="stat-card text-center">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-amber-500/10 text-amber-400 mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">استحواذ متسارع للسوق</h3>
+                    <p class="text-gray-400">النموذج مصمم لتحقيق نمو قوي. مع إمكانية تفعيل سيناريو "Turbo" لزيادة الإنفاق التسويقي المدروس وتسريع تبني الدفع بالكريبتو لاكتساب حصة سوقية قياسية.</p>
+                </div>
+            </div>
+        </section>
+        <section id="projections" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-10">التوقعات المالية التفاعلية</h2>
+            <div class="bg-gray-800 p-4 sm:p-6 rounded-xl border border-gray-700">
+                <div class="mb-6">
+                    <div id="tabs-container" class="flex flex-wrap gap-2 justify-center" role="tablist">
+                        <button id="tab-store" role="tab" aria-selected="true" class="tab-btn tab-active px-4 py-2 rounded-md font-semibold transition-colors duration-300">أداء المتجر</button>
+                        <button id="tab-profit" role="tab" aria-selected="false" class="tab-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">توزيع الأرباح</button>
+                        <button id="tab-burn" role="tab" aria-selected="false" class="tab-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">سيناريوهات الحرق</button>
+                    </div>
+                </div>
+                <div id="tab-content">
+                    <div id="content-store" role="tabpanel">
+                        <h3 class="text-xl font-bold text-center mb-6">مؤشرات الأداء الرئيسية للمتجر (10 سنوات - بالمليون دولار)</h3>
+                        <div class="h-96"><canvas id="storeChart"></canvas></div>
+                        <h3 class="text-xl font-bold text-center mt-8 mb-6">نمو حصة الدفع بالعملات الرقمية</h3>
+                        <div class="h-72"><canvas id="cryptoShareChart"></canvas></div>
+                    </div>
+                    <div id="content-profit" role="tabpanel" class="hidden">
+                        <h3 class="text-xl font-bold text-center mb-6">توزيع صافي الربح التشغيلي (NOPAT) - بالمليون دولار</h3>
+                        <div class="h-96"><canvas id="profitChart"></canvas></div>
+                    </div>
+                    <div id="content-burn" role="tabpanel" class="hidden">
+                        <h3 class="text-xl font-bold text-center mb-6">تحليل تأثير آلية الحرق على التوكن</h3>
+                        <div id="scenario-buttons" class="flex justify-center gap-3 mb-6">
+                            <button data-scenario="base" class="scenario-btn tab-active px-4 py-2 rounded-md font-semibold transition-colors duration-300">السيناريو الأساسي</button>
+                            <button data-scenario="conservative" class="scenario-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">السيناريو المتحفظ</button>
+                            <button data-scenario="upside" class="scenario-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">السيناريو المتفائل</button>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="h-80"><canvas id="burnPriceChart"></canvas></div>
+                            <div class="h-80"><canvas id="burnSupplyChart"></canvas></div>
+                            <div class="lg:col-span-2 h-80"><canvas id="burnAmountChart"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="tokenomics" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-10">اقتصاديات التوكن (Tokenomics)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="stat-card">
+                    <h3 class="text-xl font-bold text-center mb-4">توزيع التوكن الإجمالي</h3>
+                    <div class="h-80"><canvas id="tokenAllocationChart"></canvas></div>
+                </div>
+                <div class="stat-card table-scroll">
+                    <h3 class="text-xl font-bold text-center mb-4">جدول فتح التوكنات (Unlocks)</h3>
+                    <table class="w-full text-sm text-left text-gray-300 min-w-[600px]">
+                        <thead class="text-xs text-gray-400 uppercase bg-gray-700">
+                            <tr>
+                                <th scope="col" class="px-4 py-3">السنة</th>
+                                <th scope="col" class="px-4 py-3">المجتمع</th>
+                                <th scope="col" class="px-4 py-3">الخزينة</th>
+                                <th scope="col" class="px-4 py-3">الفريق</th>
+                                <th scope="col" class="px-4 py-3">المستثمرون</th>
+                                <th scope="col" class="px-4 py-3">السيولة</th>
+                            </tr>
+                        </thead>
+                        <tbody id="unlocks-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <section id="assumptions">
+            <h2 class="text-3xl font-bold text-center mb-10">الافتراضات والملاحظات الرئيسية</h2>
+            <div class="max-w-4xl mx-auto stat-card p-8">
+                <ul id="assumptions-list" class="space-y-4"></ul>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-900 border-t border-gray-800 mt-16">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 مشروع CHEASY. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <script>
+        const financialData = {
+            labels: ["Y1", "Y2", "Y3", "Y4", "Y5", "Y6", "Y7", "Y8", "Y9", "Y10"],
+            store_base: {
+                revenue: [0.288, 0.688, 1.34, 2.24, 3.376, 4.711, 6.126, 7.502, 8.868, 10.34],
+                nopat: [-0.08, -0.158, -0.246, -0.311, -0.321, -0.246, -0.066, 0.193, 0.556, 1.032],
+                ebitda: [-0.076, -0.148, -0.226, -0.27, -0.246, -0.14, 0.07, 0.366, 0.771, 1.295],
+                crypto_share: [5, 8.9, 12.8, 16.7, 20.6, 24.4, 28.3, 32.2, 36.1, 40]
+            },
+            profit_allocation: {
+                burn: [-0.02, -0.04, -0.062, -0.078, -0.08, -0.062, -0.017, 0.048, 0.139, 0.258],
+                marketing: [-0.02, -0.04, -0.062, -0.078, -0.08, -0.062, -0.017, 0.048, 0.139, 0.258],
+                development: [-0.02, -0.04, -0.062, -0.078, -0.08, -0.062, -0.017, 0.048, 0.139, 0.258],
+                owners: [-0.02, -0.04, -0.062, -0.078, -0.08, -0.062, -0.017, 0.048, 0.139, 0.258],
+            },
+            token_burn: {
+                conservative: {
+                    price: [0.1, 0.060, 0.061, 0.067, 0.088, 0.124, 0.167, 0.220, 0.288, 0.373],
+                    circulating_supply: [130.2, 360.8, 566.8, 773.0, 878.9, 904.4, 929.5, 954.2, 978.5, 1002.5],
+                    total_supply: [1000.2, 1000.8, 1001.8, 1003.0, 1003.9, 1004.4, 1004.5, 1004.5, 1004.4, 1004.2],
+                    burned: [-0.199, -0.657, -1.004, -1.154, -0.903, -0.494, -0.098, 0.218, 0.482, 0.691]
+                },
+                base: {
+                    price: [0.1, 0.072, 0.091, 0.112, 0.148, 0.201, 0.252, 0.301, 0.360, 0.428],
+                    circulating_supply: [130.2, 360.7, 566.4, 772.1, 877.6, 902.9, 928.0, 952.7, 977.0, 1001.0],
+                    total_supply: [1000.2, 1000.7, 1001.4, 1002.1, 1002.6, 1002.9, 1003.0, 1002.8, 1002.4, 1001.8],
+                    burned: [-0.199, -0.547, -0.669, -0.692, -0.541, -0.305, -0.065, 0.16, 0.386, 0.602]
+                },
+                upside: {
+                    price: [0.1, 0.090, 0.114, 0.168, 0.222, 0.288, 0.350, 0.410, 0.479, 0.556],
+                    circulating_supply: [130.2, 360.6, 566.1, 771.6, 876.9, 902.2, 927.2, 951.8, 976.1, 1000.1],
+                    total_supply: [1000.2, 1000.6, 1001.1, 1001.6, 1001.9, 1002.2, 1002.2, 1002.1, 1001.6, 1001.0],
+                    burned: [-0.199, -0.438, -0.535, -0.461, -0.360, -0.213, -0.047, 0.117, 0.29, 0.464]
+                }
+            },
+            token_allocations: {
+                labels: ["المجتمع", "الخزينة", "الفريق", "المستثمرون", "السيولة"],
+                data: [40, 25, 15, 15, 5]
+            },
+            token_unlocks: [
+                { year: "Y1", community: 80000000, treasury: 25000000, team: 0, investors: 0, liquidity: 25000000 },
+                { year: "Y2", community: 80000000, treasury: 25000000, team: 50000000, investors: 50000000, liquidity: 25000000 },
+                { year: "Y3", community: 80000000, treasury: 25000000, team: 50000000, investors: 50000000, liquidity: 0 },
+                { year: "Y4", community: 80000000, treasury: 25000000, team: 50000000, investors: 50000000, liquidity: 0 },
+                { year: "Y5", community: 80000000, treasury: 25000000, team: 0, investors: 0, liquidity: 0 },
+                { year: "Y6", community: 0, treasury: 25000000, team: 0, investors: 0, liquidity: 0 },
+                { year: "Y7", community: 0, treasury: 25000000, team: 0, investors: 0, liquidity: 0 },
+                { year: "Y8", community: 0, treasury: 25000000, team: 0, investors: 0, liquidity: 0 },
+                { year: "Y9", community: 0, treasury: 25000000, team: 0, investors: 0, liquidity: 0 },
+                { year: "Y10", community: 0, treasury: 25000000, team: 0, investors: 0, liquidity: 0 },
+            ],
+            assumptions: [
+                { key: "مزيج المدفوعات", value: "ترتفع حصة الكريبتو من 5% إلى 40% خلال 10 سنوات" },
+                { key: "رسوم البطاقات (Fiat)", value: "تقريبًا 2.9% + 0.30$ لكل طلب" },
+                { key: "رسوم الكريبتو", value: "متوسط ~0.6%" },
+                { key: "قاعدة توزيع الأرباح", value: "25% حرق، 25% تسويق، 25% تطوير، 25% للملاك (من NOPAT)" },
+                { key: "آلية الحرق", value: "ميزانية الحرق السنوية = 25% من NOPAT مقسومة على سعر التوكن" },
+                { key: "سعر الطرح (السنة 1)", value: "0.10$" },
+                { key: "سعر الصرف", value: "3.75 ريال سعودي للدولار الأمريكي" },
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const chartConfig = {
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#D1D5DB',
+                            font: { size: 14 }
+                        }
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: { color: '#9CA3AF' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    },
+                    y: {
+                        ticks: { color: '#9CA3AF' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                    }
+                }
+            };
+
+            Chart.defaults.font.family = 'Tajawal, sans-serif';
+            Chart.defaults.color = '#D1D5DB';
+
+            let storeChart;
+            let cryptoShareChart;
+            let profitChart;
+            let burnPriceChart;
+            let burnSupplyChart;
+            let burnAmountChart;
+            let tokenAllocationChart;
+
+            const tabs = document.querySelectorAll('[role="tab"]');
+            const tabContents = document.querySelectorAll('[role="tabpanel"]');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => {
+                        t.setAttribute('aria-selected', 'false');
+                        t.classList.remove('tab-active');
+                        t.classList.add('tab-inactive');
+                    });
+                    tab.setAttribute('aria-selected', 'true');
+                    tab.classList.remove('tab-inactive');
+                    tab.classList.add('tab-active');
+
+                    const contentId = `content-${tab.id.split('-')[1]}`;
+                    tabContents.forEach(content => {
+                        if (content.id === contentId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            const scenarioButtons = document.querySelectorAll('.scenario-btn');
+            scenarioButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const scenario = button.dataset.scenario;
+                    updateBurnCharts(scenario);
+                    scenarioButtons.forEach(btn => {
+                        btn.classList.remove('tab-active');
+                        btn.classList.add('tab-inactive');
+                    });
+                    button.classList.remove('tab-inactive');
+                    button.classList.add('tab-active');
+                });
+            });
+
+            function initCharts() {
+                const storeCtx = document.getElementById('storeChart').getContext('2d');
+                storeChart = new Chart(storeCtx, {
+                    type: 'line',
+                    data: {
+                        labels: financialData.labels,
+                        datasets: [
+                            {
+                                label: 'الإيرادات',
+                                data: financialData.store_base.revenue,
+                                borderColor: '#3B82F6',
+                                backgroundColor: 'rgba(59, 130, 246, 0.15)',
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'الأرباح قبل الفوائد والضرائب',
+                                data: financialData.store_base.ebitda,
+                                borderColor: '#10B981',
+                                backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                                fill: true,
+                                tension: 0.4
+                            },
+                            {
+                                label: 'صافي الربح التشغيلي',
+                                data: financialData.store_base.nopat,
+                                borderColor: '#F59E0B',
+                                backgroundColor: 'rgba(245, 158, 11, 0.15)',
+                                fill: true,
+                                tension: 0.4
+                            }
+                        ]
+                    },
+                    options: chartConfig
+                });
+
+                const cryptoShareCtx = document.getElementById('cryptoShareChart').getContext('2d');
+                cryptoShareChart = new Chart(cryptoShareCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: financialData.labels,
+                        datasets: [{
+                            label: 'حصة الدفع بالكريبتو (%)',
+                            data: financialData.store_base.crypto_share,
+                            backgroundColor: '#6366F1',
+                            borderRadius: 4
+                        }]
+                    },
+                    options: chartConfig
+                });
+
+                const profitCtx = document.getElementById('profitChart').getContext('2d');
+                profitChart = new Chart(profitCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: financialData.labels,
+                        datasets: [
+                            { label: 'ميزانية الحرق', data: financialData.profit_allocation.burn, backgroundColor: '#EF4444' },
+                            { label: 'التسويق', data: financialData.profit_allocation.marketing, backgroundColor: '#3B82F6' },
+                            { label: 'التطوير', data: financialData.profit_allocation.development, backgroundColor: '#F59E0B' },
+                            { label: 'الملاك', data: financialData.profit_allocation.owners, backgroundColor: '#10B981' }
+                        ]
+                    },
+                    options: {
+                        ...chartConfig,
+                        scales: {
+                            x: { ...chartConfig.scales.x, stacked: true },
+                            y: { ...chartConfig.scales.y, stacked: true }
+                        }
+                    }
+                });
+
+                const tokenAllocationCtx = document.getElementById('tokenAllocationChart').getContext('2d');
+                tokenAllocationChart = new Chart(tokenAllocationCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: financialData.token_allocations.labels,
+                        datasets: [{
+                            data: financialData.token_allocations.data,
+                            backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#6366F1', '#EC4899'],
+                            borderColor: '#1F2937',
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'top', labels: { color: '#D1D5DB' } }
+                        }
+                    }
+                });
+
+                const burnPriceCtx = document.getElementById('burnPriceChart').getContext('2d');
+                burnPriceChart = new Chart(burnPriceCtx, {
+                    type: 'line',
+                    data: {},
+                    options: {
+                        ...chartConfig,
+                        plugins: {
+                            ...chartConfig.plugins,
+                            title: { display: true, text: 'السعر الضمني ($)', color: 'white' }
+                        }
+                    }
+                });
+
+                const burnSupplyCtx = document.getElementById('burnSupplyChart').getContext('2d');
+                burnSupplyChart = new Chart(burnSupplyCtx, {
+                    type: 'line',
+                    data: {},
+                    options: {
+                        ...chartConfig,
+                        plugins: {
+                            ...chartConfig.plugins,
+                            title: { display: true, text: 'العرض (مليون توكن)', color: 'white' }
+                        }
+                    }
+                });
+
+                const burnAmountCtx = document.getElementById('burnAmountChart').getContext('2d');
+                burnAmountChart = new Chart(burnAmountCtx, {
+                    type: 'bar',
+                    data: {},
+                    options: {
+                        ...chartConfig,
+                        plugins: {
+                            ...chartConfig.plugins,
+                            title: { display: true, text: 'التوكنات المحروقة (مليون)', color: 'white' }
+                        }
+                    }
+                });
+
+                updateBurnCharts('base');
+            }
+
+            function updateBurnCharts(scenario) {
+                const data = financialData.token_burn[scenario];
+
+                burnPriceChart.data = {
+                    labels: financialData.labels,
+                    datasets: [{
+                        label: `السعر الضمني - ${scenario}`,
+                        data: data.price,
+                        borderColor: '#3B82F6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.15)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                };
+                burnPriceChart.update();
+
+                burnSupplyChart.data = {
+                    labels: financialData.labels,
+                    datasets: [
+                        { label: 'العرض المتداول', data: data.circulating_supply, borderColor: '#10B981', tension: 0.4 },
+                        { label: 'العرض الإجمالي', data: data.total_supply, borderColor: '#F59E0B', tension: 0.4 }
+                    ]
+                };
+                burnSupplyChart.update();
+
+                burnAmountChart.data = {
+                    labels: financialData.labels,
+                    datasets: [{
+                        label: 'التوكنات المحروقة',
+                        data: data.burned.map(value => value > 0 ? value : 0),
+                        backgroundColor: '#EF4444',
+                        borderRadius: 4
+                    }]
+                };
+                burnAmountChart.update();
+            }
+
+            function populateTables() {
+                const unlocksBody = document.getElementById('unlocks-table-body');
+                unlocksBody.innerHTML = '';
+                financialData.token_unlocks.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.className = 'bg-gray-800 border-b border-gray-700 hover:bg-gray-700/70';
+                    tr.innerHTML = `
+                        <th scope="row" class="px-4 py-4 font-medium whitespace-nowrap">${row.year}</th>
+                        <td class="px-4 py-4">${(row.community/1e6).toLocaleString()} M</td>
+                        <td class="px-4 py-4">${(row.treasury/1e6).toLocaleString()} M</td>
+                        <td class="px-4 py-4">${(row.team/1e6).toLocaleString()} M</td>
+                        <td class="px-4 py-4">${(row.investors/1e6).toLocaleString()} M</td>
+                        <td class="px-4 py-4">${(row.liquidity/1e6).toLocaleString()} M</td>
+                    `;
+                    unlocksBody.appendChild(tr);
+                });
+
+                const assumptionsList = document.getElementById('assumptions-list');
+                assumptionsList.innerHTML = '';
+                financialData.assumptions.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = 'flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-gray-700 pb-2';
+                    li.innerHTML = `
+                        <span class="font-bold text-blue-300">${item.key}:</span>
+                        <span class="text-right text-gray-200">${item.value}</span>
+                    `;
+                    assumptionsList.appendChild(li);
+                });
+            }
+
+            initCharts();
+            populateTables();
+        });
+    </script>
+</body>
+</html>
