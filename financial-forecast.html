@@ -11,279 +11,62 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        :root {
-            color-scheme: dark;
-            --page-bg: radial-gradient(circle at top, rgba(59,130,246,0.22), transparent 55%), #0b1220;
-            --surface: rgba(17,24,39,0.9);
-            --surface-alt: rgba(31,41,55,0.85);
-            --surface-soft: rgba(55,65,81,0.6);
-            --text-main: #f9fafb;
-            --text-muted: #d1d5db;
-            --accent-blue: #3b82f6;
-            --accent-emerald: #10b981;
-            --accent-purple: #6366f1;
-            --border-soft: rgba(59,66,82,0.45);
-            --shadow-xl: 0 25px 60px rgba(2,6,23,0.55);
-        }
-        *, *::before, *::after { box-sizing: border-box; }
         body {
             font-family: 'Tajawal', sans-serif;
-            background: var(--page-bg);
-            color: var(--text-main);
-            margin: 0;
-            min-height: 100vh;
+            background-color: #111827;
+            color: #F9FAFB;
         }
-        header {
-            background: rgba(8,12,24,0.82);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(99,102,241,0.25);
+        .chartjs-tooltip {
+            background: rgba(31, 41, 55, 0.8) !important;
+            color: white !important;
+            border-radius: 8px !important;
         }
-        a:focus-visible {
-            outline: 2px solid rgba(59,130,246,0.6);
-            outline-offset: 4px;
+        .chartjs-legend-text {
+            color: #D1D5DB !important;
         }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 1rem;
-            border-radius: 999px;
-            border: 1px solid rgba(59,130,246,0.45);
-            background: rgba(59,130,246,0.12);
-            color: var(--accent-blue);
-            font-weight: 600;
-            box-shadow: 0 15px 35px rgba(37,99,235,0.35);
+        .tab-active {
+            background-color: #3B82F6;
+            color: white;
         }
-        .section-title {
-            font-size: clamp(2.1rem, 4.5vw, 3.05rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        .intro-paragraph {
-            font-size: clamp(1rem, 2.4vw, 1.15rem);
-            color: var(--text-muted);
-            line-height: 1.85;
-            max-width: 48rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .stat-card {
-            background: var(--surface);
-            border-radius: 1.25rem;
-            border: 1px solid var(--border-soft);
-            padding: clamp(1.35rem, 2vw, 1.85rem);
-            box-shadow: var(--shadow-xl);
-            min-height: 100%;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 60px rgba(3,7,18,0.5);
-        }
-        .data-panel {
-            background: var(--surface-alt);
-            border-radius: 1.35rem;
-            border: 1px solid rgba(148,163,184,0.25);
-            padding: clamp(1.35rem, 2vw, 1.9rem);
-            box-shadow: var(--shadow-xl);
+        .tab-inactive {
+            background-color: #374151;
+            color: #D1D5DB;
         }
         .tab-btn,
         .scenario-btn {
+            background-color: #374151;
+            color: #D1D5DB;
+        }
+        .stat-card {
+            background-color: #1F2937;
+            border: 1px solid #374151;
             border-radius: 0.75rem;
-            border: 1px solid transparent;
-            padding: 0.65rem 1.1rem;
-            font-weight: 700;
-            background: var(--surface-soft);
-            color: var(--text-muted);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .tab-btn:hover,
-        .scenario-btn:hover {
-            transform: translateY(-2px);
-        }
-        .tab-active {
-            background: var(--accent-blue);
-            color: var(--text-main);
-            box-shadow: 0 15px 30px rgba(37,99,235,0.35);
-        }
-        .scenario-btn.tab-active {
-            background-image: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: var(--text-main);
-        }
-        .chart-shell {
-            position: relative;
-            width: 100%;
-            height: clamp(18rem, 55vw, 24rem);
-        }
-        .chart-shell--lg {
-            height: clamp(20rem, 58vw, 26rem);
-        }
-        .chart-shell--xl {
-            height: clamp(22rem, 62vw, 30rem);
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
         }
         .table-scroll {
             overflow-x: auto;
-            border-radius: 1rem;
-            border: 1px solid rgba(148,163,184,0.25);
-            background: rgba(17,24,39,0.75);
         }
-        .table-scroll table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 620px;
+        .table-scroll::-webkit-scrollbar {
+            height: 6px;
         }
-        .table-scroll th,
-        .table-scroll td {
-            border-bottom: 1px solid rgba(148,163,184,0.18);
-            padding: 0.75rem 0.85rem;
-            text-align: right;
-            white-space: nowrap;
+        .table-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(107, 114, 128, 0.7);
+            border-radius: 9999px;
         }
-        .table-scroll th {
-            background: rgba(30,41,59,0.9);
-            color: var(--text-main);
-            font-size: 0.8rem;
-            letter-spacing: 0.03em;
-        }
-        .table-scroll tbody tr:hover td {
-            background: rgba(59,130,246,0.12);
-        }
-        #assumptions-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .assumption-item {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(148,163,184,0.18);
-        }
-        .assumption-item:last-child {
-            border-bottom: none;
-        }
-        footer {
-            background: rgba(8,12,24,0.85);
-            border-top: 1px solid rgba(99,102,241,0.25);
-        }
-        .mobile-toggle {
-            display: none;
-        }
-        .mobile-nav {
-            position: fixed;
-            inset: 0;
-            display: none;
-            padding: 5rem 1.5rem 2rem;
-            background: rgba(2,6,23,0.65);
-            backdrop-filter: blur(8px);
-            z-index: 40;
-            align-items: flex-start;
-            justify-content: flex-end;
-        }
-        .mobile-nav.open {
-            display: flex;
-        }
-        .mobile-nav-panel {
-            background: var(--surface);
-            border: 1px solid var(--border-soft);
-            border-radius: 1.25rem;
-            padding: 1.75rem 1.35rem;
-            width: 100%;
-            max-width: 320px;
-            box-shadow: var(--shadow-xl);
-        }
-        .mobile-nav-panel a {
-            display: block;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid rgba(148,163,184,0.18);
-            color: var(--text-main);
-            font-weight: 600;
-        }
-        .mobile-nav-panel a:last-child {
-            border-bottom: none;
-        }
-        .mobile-nav-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: rgba(17,24,39,0.9);
-            border: 1px solid rgba(148,163,184,0.25);
-            border-radius: 999px;
-            padding: 0.4rem;
-            cursor: pointer;
-        }
-        .mobile-nav-close svg {
-            width: 1.4rem;
-            height: 1.4rem;
-            color: var(--text-main);
-        }
-        .chartjs-tooltip {
-            background: rgba(17,24,39,0.9) !important;
-            color: var(--text-main) !important;
-            border-radius: 0.75rem !important;
-            border: 1px solid rgba(59,130,246,0.4) !important;
-        }
-        .chartjs-legend-text {
-            color: var(--text-muted) !important;
-        }
-        @media (max-width: 1024px) {
-            header nav {
-                padding: 0.95rem 1.25rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.4rem;
-                border-radius: 999px;
-                padding: 0.4rem 0.9rem;
-                background: rgba(59,130,246,0.18);
-                border: 1px solid rgba(59,130,246,0.35);
-                color: var(--text-main);
-                font-weight: 700;
-            }
-            .mobile-toggle svg {
-                width: 1.4rem;
-                height: 1.4rem;
-            }
-            .chart-shell {
-                height: clamp(17rem, 70vw, 22rem);
-            }
-            .chart-shell--lg {
-                height: clamp(18rem, 75vw, 24rem);
-            }
-            .chart-shell--xl {
-                height: clamp(19rem, 80vw, 26rem);
-            }
-            .assumption-item {
-                align-items: flex-start;
-            }
-        }
-        @media (min-width: 640px) {
-            .assumption-item {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-        @media (max-width: 640px) {
-            .table-scroll table {
-                min-width: 520px;
-            }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                transition-duration: 0.001ms !important;
-                animation-duration: 0.001ms !important;
-            }
+        a:focus-visible {
+            outline: 2px solid rgba(59, 130, 246, 0.6);
+            outline-offset: 4px;
         }
     </style>
 </head>
 <body class="antialiased">
-    <header class="sticky top-0 z-50 shadow-lg">
-        <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header class="bg-gray-900/70 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-800">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <a href="./" class="text-2xl font-bold text-white">CHEASY</a>
             <div class="hidden md:flex items-center space-x-reverse space-x-4 text-sm">
                 <a href="#strategy" class="text-gray-300 hover:text-blue-400">الركائز</a>
@@ -292,35 +75,14 @@
                 <a href="#assumptions" class="text-gray-300 hover:text-blue-400">الافتراضات</a>
                 <a href="whitepaper/" class="text-gray-300 hover:text-blue-400">الورقة البيضاء</a>
             </div>
-            <button id="mobile-menu-toggle" class="mobile-toggle md:hidden" aria-expanded="false" aria-controls="forecast-mobile-menu">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                القائمة
-            </button>
+            <a href="whitepaper/" class="md:hidden text-sm text-blue-400">الورقة البيضاء</a>
         </nav>
     </header>
-    <div id="forecast-mobile-menu" class="mobile-nav" hidden>
-        <button id="mobile-menu-close" class="mobile-nav-close" type="button" aria-label="إغلاق القائمة">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-        <div class="mobile-nav-panel" role="dialog" aria-modal="true">
-            <a href="./">العودة إلى الرئيسية</a>
-            <a href="#strategy">الركائز</a>
-            <a href="#projections">التوقعات</a>
-            <a href="#tokenomics">اقتصاديات التوكن</a>
-            <a href="#assumptions">الافتراضات</a>
-            <a href="whitepaper/">الورقة البيضاء</a>
-            <a href="mailto:h.ghamdi@gmail.com" class="mt-4">تواصل معنا</a>
-        </div>
-    </div>
-    <main class="max-w-6xl mx-auto px-6 py-12">
+    <main class="container mx-auto px-6 py-12">
         <section class="text-center mb-16">
-            <p class="hero-badge mb-6">تصور تقديري — مرحلة ما قبل الإطلاق</p>
+            <p class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/40 text-blue-200 text-sm mb-6">تصور تقديري — مرحلة ما قبل الإطلاق</p>
             <h1 class="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">مستقبل مالي مشترك: العميل هو الشريك</h1>
-            <p class="intro-paragraph">
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
                 نقدم نموذجًا ماليًا مبتكرًا يربط نجاح المتجر مباشرةً بقيمة أصول عملائنا ومستثمرينا. من خلال آلية حرق شفافة وتوزيع عادل للأرباح، نحن لا نبني متجرًا فحسب، بل نبني اقتصادًا متكاملًا ينمو مع مجتمعه.
             </p>
         </section>
@@ -352,36 +114,36 @@
         </section>
         <section id="projections" class="mb-16">
             <h2 class="text-3xl font-bold text-center mb-10">التوقعات المالية التفاعلية</h2>
-            <div class="data-panel">
+            <div class="bg-gray-800 p-4 sm:p-6 rounded-xl border border-gray-700">
                 <div class="mb-6">
                     <div id="tabs-container" class="flex flex-wrap gap-2 justify-center" role="tablist">
-                        <button id="tab-store" role="tab" aria-selected="true" class="tab-btn tab-active">أداء المتجر</button>
-                        <button id="tab-profit" role="tab" aria-selected="false" class="tab-btn tab-inactive">توزيع الأرباح</button>
-                        <button id="tab-burn" role="tab" aria-selected="false" class="tab-btn tab-inactive">سيناريوهات الحرق</button>
+                        <button id="tab-store" role="tab" aria-selected="true" class="tab-btn tab-active px-4 py-2 rounded-md font-semibold transition-colors duration-300">أداء المتجر</button>
+                        <button id="tab-profit" role="tab" aria-selected="false" class="tab-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">توزيع الأرباح</button>
+                        <button id="tab-burn" role="tab" aria-selected="false" class="tab-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">سيناريوهات الحرق</button>
                     </div>
                 </div>
                 <div id="tab-content">
                     <div id="content-store" role="tabpanel">
                         <h3 class="text-xl font-bold text-center mb-6">مؤشرات الأداء الرئيسية للمتجر (10 سنوات - بالمليون دولار)</h3>
-                        <div class="chart-shell chart-shell--xl"><canvas id="storeChart"></canvas></div>
+                        <div class="h-96"><canvas id="storeChart"></canvas></div>
                         <h3 class="text-xl font-bold text-center mt-8 mb-6">نمو حصة الدفع بالعملات الرقمية</h3>
-                        <div class="chart-shell"><canvas id="cryptoShareChart"></canvas></div>
+                        <div class="h-72"><canvas id="cryptoShareChart"></canvas></div>
                     </div>
                     <div id="content-profit" role="tabpanel" class="hidden">
                         <h3 class="text-xl font-bold text-center mb-6">توزيع صافي الربح التشغيلي (NOPAT) - بالمليون دولار</h3>
-                        <div class="chart-shell chart-shell--xl"><canvas id="profitChart"></canvas></div>
+                        <div class="h-96"><canvas id="profitChart"></canvas></div>
                     </div>
                     <div id="content-burn" role="tabpanel" class="hidden">
                         <h3 class="text-xl font-bold text-center mb-6">تحليل تأثير آلية الحرق على التوكن</h3>
                         <div id="scenario-buttons" class="flex justify-center gap-3 mb-6">
-                            <button data-scenario="base" class="scenario-btn tab-active">السيناريو الأساسي</button>
-                            <button data-scenario="conservative" class="scenario-btn tab-inactive">السيناريو المتحفظ</button>
-                            <button data-scenario="upside" class="scenario-btn tab-inactive">السيناريو المتفائل</button>
+                            <button data-scenario="base" class="scenario-btn tab-active px-4 py-2 rounded-md font-semibold transition-colors duration-300">السيناريو الأساسي</button>
+                            <button data-scenario="conservative" class="scenario-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">السيناريو المتحفظ</button>
+                            <button data-scenario="upside" class="scenario-btn tab-inactive px-4 py-2 rounded-md font-semibold transition-colors duration-300">السيناريو المتفائل</button>
                         </div>
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                            <div class="chart-shell chart-shell--lg"><canvas id="burnPriceChart"></canvas></div>
-                            <div class="chart-shell chart-shell--lg"><canvas id="burnSupplyChart"></canvas></div>
-                            <div class="lg:col-span-2 chart-shell chart-shell--lg"><canvas id="burnAmountChart"></canvas></div>
+                            <div class="h-80"><canvas id="burnPriceChart"></canvas></div>
+                            <div class="h-80"><canvas id="burnSupplyChart"></canvas></div>
+                            <div class="lg:col-span-2 h-80"><canvas id="burnAmountChart"></canvas></div>
                         </div>
                     </div>
                 </div>
@@ -392,11 +154,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="stat-card">
                     <h3 class="text-xl font-bold text-center mb-4">توزيع التوكن الإجمالي</h3>
-                    <div class="chart-shell chart-shell--lg"><canvas id="tokenAllocationChart"></canvas></div>
+                    <div class="h-80"><canvas id="tokenAllocationChart"></canvas></div>
                 </div>
                 <div class="stat-card table-scroll">
                     <h3 class="text-xl font-bold text-center mb-4">جدول فتح التوكنات (Unlocks)</h3>
-                    <table class="w-full text-sm text-left text-gray-300">
+                    <table class="w-full text-sm text-left text-gray-300 min-w-[600px]">
                         <thead class="text-xs text-gray-400 uppercase bg-gray-700">
                             <tr>
                                 <th scope="col" class="px-4 py-3">السنة</th>
@@ -415,12 +177,12 @@
         <section id="assumptions">
             <h2 class="text-3xl font-bold text-center mb-10">الافتراضات والملاحظات الرئيسية</h2>
             <div class="max-w-4xl mx-auto stat-card p-8">
-                <ul id="assumptions-list"></ul>
+                <ul id="assumptions-list" class="space-y-4"></ul>
             </div>
         </section>
     </main>
     <footer class="bg-gray-900 border-t border-gray-800 mt-16">
-        <div class="max-w-6xl mx-auto px-6 py-4 text-center text-gray-400 text-sm">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-400 text-sm">
             <p>&copy; 2025 مشروع CHEASY. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
@@ -487,62 +249,29 @@
         };
 
         document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenu = document.getElementById('forecast-mobile-menu');
-            const mobileToggle = document.getElementById('mobile-menu-toggle');
-            const mobileClose = document.getElementById('mobile-menu-close');
-            if (mobileMenu && mobileToggle && mobileClose) {
-                const mobileLinks = mobileMenu.querySelectorAll('a');
-                const openMenu = () => {
-                    mobileMenu.hidden = false;
-                    mobileMenu.classList.add('open');
-                    document.body.style.overflow = 'hidden';
-                    mobileToggle.setAttribute('aria-expanded', 'true');
-                };
-                const closeMenu = () => {
-                    mobileMenu.classList.remove('open');
-                    document.body.style.overflow = '';
-                    mobileToggle.setAttribute('aria-expanded', 'false');
-                    mobileMenu.hidden = true;
-                };
-                mobileToggle.addEventListener('click', () => {
-                    if (mobileMenu.classList.contains('open')) {
-                        closeMenu();
-                    } else {
-                        openMenu();
-                    }
-                });
-                mobileClose.addEventListener('click', closeMenu);
-                mobileMenu.addEventListener('click', (event) => {
-                    if (event.target === mobileMenu) {
-                        closeMenu();
-                    }
-                });
-                mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
-            }
-
             const chartConfig = {
                 plugins: {
                     legend: {
                         labels: {
-                            color: '#d1d5db',
+                            color: '#D1D5DB',
                             font: { size: 14 }
                         }
                     },
                 },
                 scales: {
                     x: {
-                        ticks: { color: '#cbd5f5' },
-                        grid: { color: 'rgba(255, 255, 255, 0.12)' }
+                        ticks: { color: '#9CA3AF' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
                     },
                     y: {
-                        ticks: { color: '#cbd5f5' },
-                        grid: { color: 'rgba(255, 255, 255, 0.12)' }
+                        ticks: { color: '#9CA3AF' },
+                        grid: { color: 'rgba(255, 255, 255, 0.1)' }
                     }
                 }
             };
 
             Chart.defaults.font.family = 'Tajawal, sans-serif';
-            Chart.defaults.color = '#d1d5db';
+            Chart.defaults.color = '#D1D5DB';
 
             let storeChart;
             let cryptoShareChart;
@@ -766,8 +495,9 @@
                 unlocksBody.innerHTML = '';
                 financialData.token_unlocks.forEach(row => {
                     const tr = document.createElement('tr');
+                    tr.className = 'bg-gray-800 border-b border-gray-700 hover:bg-gray-700/70';
                     tr.innerHTML = `
-                        <th scope="row" class="px-4 py-4 font-medium whitespace-nowrap text-blue-200">${row.year}</th>
+                        <th scope="row" class="px-4 py-4 font-medium whitespace-nowrap">${row.year}</th>
                         <td class="px-4 py-4">${(row.community/1e6).toLocaleString()} M</td>
                         <td class="px-4 py-4">${(row.treasury/1e6).toLocaleString()} M</td>
                         <td class="px-4 py-4">${(row.team/1e6).toLocaleString()} M</td>
@@ -781,7 +511,7 @@
                 assumptionsList.innerHTML = '';
                 financialData.assumptions.forEach(item => {
                     const li = document.createElement('li');
-                    li.className = 'assumption-item';
+                    li.className = 'flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-gray-700 pb-2';
                     li.innerHTML = `
                         <span class="font-bold text-blue-300">${item.key}:</span>
                         <span class="text-right text-gray-200">${item.value}</span>
