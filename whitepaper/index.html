@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الورقة البيضاء لمشروع تشيزي (Cheasy)</title>
+    <meta name="description" content="ورقة بيضاء استثمارية شاملة لمشروع تشيزي، توضح الرؤية، أطروحة القيمة، محرك الشراء والحرق، الاقتصاديات الرمزية، خارطة الطريق، والحوكمة." />
+    <meta name="keywords" content="تشيزي, CHEASY, ورقة بيضاء, شراء وحرق, تجارة إلكترونية, ويب 3, DAO, اقتصاديات الرمز" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+            --page-bg: radial-gradient(circle at top right, rgba(59,130,246,0.18), transparent 60%), #050b18;
+            --surface-1: rgba(13,23,42,0.86);
+            --surface-2: rgba(19,29,53,0.78);
+            --surface-3: rgba(30,41,59,0.75);
+            --border-soft: rgba(148,163,184,0.18);
+            --border-strong: rgba(99,102,241,0.45);
+            --text-main: #dbe7ff;
+            --text-secondary: #9fb3d9;
+            --accent-primary: #60a5fa;
+            --accent-secondary: #38bdf8;
+            --shadow-xl: 0 35px 80px rgba(8,15,35,0.45);
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--page-bg);
+            color: var(--text-main);
+            margin: 0;
+            min-height: 100vh;
+        }
+        ::selection {
+            background: rgba(56,189,248,0.35);
+            color: #f8fafc;
+        }
+        header {
+            background: rgba(8,13,27,0.85);
+            border-bottom: 1px solid var(--border-soft);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(18px);
+            box-shadow: 0 18px 45px rgba(5,10,25,0.45);
+        }
+        .container {
+            max-width: 1260px;
+            margin: 0 auto;
+            padding: 0 1.75rem;
+        }
+        .hero {
+            padding: clamp(3rem, 5vw, 4.5rem) 0 3rem;
+            display: grid;
+            gap: 1.75rem;
+        }
+        .hero h1 {
+            font-size: clamp(2.45rem, 4vw, 3.75rem);
+            font-weight: 900;
+            margin: 0;
+            color: #f8fafc;
+            letter-spacing: -0.01em;
+        }
+        .hero p {
+            font-size: 1.08rem;
+            line-height: 1.85;
+            color: var(--text-secondary);
+            max-width: 50rem;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+        .hero-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(30,41,59,0.55);
+            border: 1px solid rgba(148,163,184,0.24);
+            font-size: 0.95rem;
+        }
+        .disclaimer {
+            background: linear-gradient(135deg, rgba(30,41,59,0.88), rgba(15,23,42,0.92));
+            border: 1px solid rgba(148,163,184,0.28);
+            border-radius: 1.15rem;
+            padding: 1.65rem;
+            margin-top: 0.5rem;
+            font-size: 0.97rem;
+            color: var(--text-secondary);
+            box-shadow: 0 25px 60px rgba(6,11,25,0.4);
+        }
+        .disclaimer strong {
+            color: #f8fafc;
+        }
+        nav ul {
+            display: flex;
+            gap: 1rem;
+            padding: 1.1rem 0;
+            margin: 0;
+            list-style: none;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+        nav ul::-webkit-scrollbar {
+            height: 6px;
+        }
+        nav ul::-webkit-scrollbar-track {
+            background: rgba(148,163,184,0.12);
+            border-radius: 999px;
+        }
+        nav ul::-webkit-scrollbar-thumb {
+            background: rgba(96,165,250,0.5);
+            border-radius: 999px;
+        }
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.55rem 1.05rem;
+            border-radius: 999px;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+            white-space: nowrap;
+        }
+        nav a:hover,
+        nav a:focus-visible {
+            background: rgba(59,130,246,0.16);
+            color: var(--accent-secondary);
+            transform: translateY(-1px);
+        }
+        nav a:focus-visible {
+            outline: 2px solid rgba(59,130,246,0.35);
+            outline-offset: 2px;
+        }
+        main {
+            padding: 2.5rem 0 4.5rem;
+        }
+        .layout {
+            display: grid;
+            gap: clamp(1.75rem, 3vw, 2.5rem);
+            grid-template-columns: minmax(260px, 320px) 1fr;
+            align-items: start;
+        }
+        .toc-panel {
+            background: var(--surface-1);
+            border: 1px solid var(--border-soft);
+            border-radius: 1.5rem;
+            padding: clamp(1.5rem, 2vw, 1.85rem);
+            box-shadow: var(--shadow-xl);
+            position: sticky;
+            top: 6.5rem;
+            height: fit-content;
+        }
+        .toc-panel h2 {
+            font-size: 1.45rem;
+            margin-bottom: 1.35rem;
+        }
+        .toc {
+            display: grid;
+            gap: 0.75rem;
+        }
+        .toc a {
+            background: var(--surface-2);
+            border: 1px solid rgba(148,163,184,0.16);
+            padding: 1rem 1.15rem;
+            border-radius: 1rem;
+            color: var(--text-main);
+            display: block;
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+        .toc a span {
+            display: block;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            line-height: 1.5;
+        }
+        .toc a:hover,
+        .toc a:focus-visible {
+            transform: translateY(-3px);
+            border-color: var(--border-strong);
+            background: rgba(59,130,246,0.14);
+        }
+        .content-flow {
+            display: grid;
+            gap: clamp(1.5rem, 3vw, 2.5rem);
+        }
+        section {
+            margin: 0;
+            padding: clamp(2rem, 2.5vw, 2.75rem) clamp(1.5rem, 2.5vw, 2.5rem);
+            background: var(--surface-1);
+            border: 1px solid var(--border-soft);
+            border-radius: 1.65rem;
+            box-shadow: var(--shadow-xl);
+            scroll-margin-top: 8rem;
+        }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 1.4rem;
+            font-size: clamp(1.8rem, 2.5vw, 2.25rem);
+            font-weight: 800;
+            color: #f8fafc;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 4.75rem;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: 999px;
+        }
+        h3 {
+            font-size: 1.32rem;
+            color: #f1f5f9;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        p, li {
+            font-size: 1.04rem;
+            line-height: 1.95;
+            color: var(--text-secondary);
+        }
+        strong {
+            color: #f8fafc;
+        }
+        ul, ol {
+            padding-right: 1.25rem;
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            font-size: 0.98rem;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        table th, table td {
+            border: 1px solid rgba(148,163,184,0.25);
+            padding: 0.85rem 0.75rem;
+            text-align: right;
+            background: rgba(15,23,42,0.7);
+        }
+        table th {
+            background: rgba(30,41,59,0.9);
+            color: #f8fafc;
+            font-weight: 700;
+        }
+        table tbody tr:nth-child(even) td {
+            background: rgba(59,130,246,0.08);
+        }
+        .table-wrapper {
+            margin-top: 1.5rem;
+            border: 1px solid rgba(148,163,184,0.18);
+            border-radius: 1.15rem;
+            overflow: auto;
+            background: rgba(8,13,27,0.35);
+        }
+        code, pre {
+            font-family: 'Cascadia Code', 'Fira Code', monospace;
+            background: var(--surface-3);
+            border: 1px solid rgba(148,163,184,0.25);
+            border-radius: 0.95rem;
+            padding: 1rem 1.25rem;
+            color: var(--text-main);
+            display: block;
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+        }
+        blockquote {
+            border-right: 4px solid rgba(56,189,248,0.75);
+            margin: 1.6rem 0;
+            padding: 1.35rem 1.65rem;
+            background: rgba(30,41,59,0.7);
+            border-radius: 1.1rem;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+        }
+        footer {
+            padding: 2.5rem 0 3.5rem;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-soft);
+            margin-top: 3.5rem;
+            background: rgba(8,13,27,0.78);
+            backdrop-filter: blur(12px);
+        }
+        @media (max-width: 1024px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            .toc-panel {
+                position: static;
+                order: -1;
+                margin-bottom: 1.5rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+            nav ul {
+                gap: 0.65rem;
+                padding: 0.9rem 0;
+            }
+            nav a {
+                padding: 0.45rem 0.85rem;
+                font-size: 0.95rem;
+            }
+            section {
+                padding: 1.75rem 1.35rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .toc {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-meta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-meta span {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                transition-duration: 0.001ms !important;
+                animation-duration: 0.001ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav aria-label="روابط الصفحة">
+                <ul>
+                    <li><a href="/">العودة إلى الصفحة الرئيسية</a></li>
+                    <li><a href="#section-1">الملخص التنفيذي</a></li>
+                    <li><a href="#section-4">محرك القيمة</a></li>
+                    <li><a href="#section-6">اقتصاديات الرمز</a></li>
+                    <li><a href="#section-7">خارطة الطريق</a></li>
+                    <li><a href="#section-15">الحوكمة</a></li>
+                    <li><a href="#section-20">المخاطر والتخفيف</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero" aria-labelledby="whitepaper-title">
+                <h1 id="whitepaper-title">الاستثمار في مستقبل التجارة: بناء طبقة الثقة والملكية في الاقتصاد الرقمي</h1>
+                <p><strong>مشروع تشيزي (Cheasy)</strong> — ورقة بيضاء استثمارية شاملة</p>
+                <div class="hero-meta" aria-label="بيانات الوثيقة">
+                    <span>آخر تحديث: الربع الرابع 2024</span>
+                    <span>إصدار الوثيقة: 1.0 (مرحلة ما قبل الإطلاق)</span>
+                    <span>مدة القراءة التقديرية: 15 دقيقة</span>
+                </div>
+                <div class="disclaimer">
+                    <strong>تنبيه مهم:</strong> هذه الوثيقة لأغراض معلوماتية فقط ولا تشكل عرضًا عامًا للأوراق المالية ولا نصيحة استثمارية أو قانونية. يخضع أي طرح خاص أو ترتيبات استثمارية لاتفاقيات نهائية، وإجراءات امتثال، ومراجعات قانونية في المناطق القضائية ذات الصلة.
+                </div>
+            </section>
+
+            <div class="layout">
+                <aside class="toc-panel" aria-labelledby="toc-title">
+                    <h2 id="toc-title">دليل المحتويات</h2>
+                    <div class="toc">
+                        <a href="#section-1">1) الملخص التنفيذي<span>الرؤية، المشكلة، الحل، وأطروحة القيمة</span></a>
+                        <a href="#section-2">2) المشكلة والفرصة السوقية<span>تشخيص السوق التقليدي والويب3</span></a>
+                        <a href="#section-3">3) الحل: النظام البيئي لتشيزي<span>منصة التجارة، الرمز، المحرك، والولاء</span></a>
+                        <a href="#section-4">4) محرك القيمة<span>آلية إعادة الشراء والحرق وتأثيرها</span></a>
+                        <a href="#section-5">5) نموذج العمل وتدفقات الإيرادات<span>مصادر الربح ومؤشرات الأداء</span></a>
+                        <a href="#section-6">6) اقتصاديات الرمز وتوزيع الاستثمار<span>المعروض، التوزيع، المبادئ</span></a>
+                        <a href="#section-7">7) خارطة الطريق الاستراتيجية<span>مراحل 2025 حتى 2030</span></a>
+                        <a href="#section-8">8) لماذا الاستثمار الآن؟<span>أسباب التوقيت والتميّز</span></a>
+                        <a href="#section-9">9) نقاط القوة ونقاط الضعف (SWOT)<span>تحليل متكامل</span></a>
+                        <a href="#section-10">10) مقارنة بالأسواق/النماذج الأخرى<span>جدول مقارن</span></a>
+                        <a href="#section-11">11) ما الذي يميز تشيزي؟<span>عوامل التفوق</span></a>
+                        <a href="#section-12">12) صورة تصويرية + رحلة العميل<span>مخطط ASCII ورحلة الطلب</span></a>
+                        <a href="#section-13">13) الفصل بين المتجر والعملة<span>توضيحات قانونية وتشغيلية</span></a>
+                        <a href="#section-14">14) الهندسة التقنية والتشغيلية<span>اختيارات تقنية وأمنية</span></a>
+                        <a href="#section-15">15) الحوكمة والشفافية<span>مراحل الحوكمة وسياسات الإفصاح</span></a>
+                        <a href="#section-16">16) الامتثال القانوني<span>إطار عام للامتثال</span></a>
+                        <a href="#section-17">17) إدارة الخزانة وسياسة الشراء والحرق<span>سياسات التنفيذ والتقارير</span></a>
+                        <a href="#section-18">18) خطة الانطلاق إلى السوق والمجتمع<span>استراتيجية GTM</span></a>
+                        <a href="#section-19">19) إدارة المورّدين والجودة (FBC)<span>المعايير والعمليات</span></a>
+                        <a href="#section-20">20) المخاطر وخطط التخفيف<span>المخاطر الرئيسية وإدارتها</span></a>
+                        <a href="#section-21">21) مؤشرات الأداء والشفافية<span>لوحات ومخرجات دورية</span></a>
+                        <a href="#section-22">22) استخدام المتحصلات<span>توزيع افتراضي للتمويل</span></a>
+                        <a href="#section-23">23) ملاحق مختصرة<span>قاموس وسياسات وعناوين</span></a>
+                    </div>
+                </aside>
+
+                <div class="content-flow">
+            <section id="section-1" aria-labelledby="section-1-title">
+                <h2 id="section-1-title">1) الملخص التنفيذي (Executive Summary)</h2>
+                <p><strong>الرؤية:</strong> تشيزي تبني نظامًا بيئيًا تجاريًا يربط بين أرباح التجارة الإلكترونية الفعلية وقيمة أصلٍ رقمي انكماشي (CHEASY)، عبر آلية <strong>إعادة شراء وحرق</strong> ربع سنوية ممولة من <strong>%25 من صافي الأرباح</strong>.</p>
+                <p><strong>المشكلة:</strong> التجارة الإلكترونية تعاني من ارتفاع CAC، تآكل الهوامش، وأزمة ثقة؛ بينما تفتقر مشاريع الويب3 إلى تدفقات نقدية حقيقية.</p>
+                <p><strong>الحل:</strong> منصة تجارة عالمية + رمز CHEASY الانكماشي + برنامج ولاء/حيازة + بنية لوجستية (FBC) + حوكمة تدريجية وصولًا إلى DAO. كل عملية بيع ناجحة تُترجم لاحقًا إلى ضغط شراء منظم على الرمز عبر buyback & burn.</p>
+                <p><strong>أطروحة القيمة:</strong> كل ربع سنة، تُخصَّص 25% من صافي الربح لشراء CHEASY من السوق المفتوح وحرقه نهائيًا، ما يقلل المعروض ويعزز الندرة، مع شفافية تقنية ومالية عالية.</p>
+            </section>
+
+            <section id="section-2" aria-labelledby="section-2-title">
+                <h2 id="section-2-title">2) المشكلة والفرصة السوقية (The Market Opportunity)</h2>
+                <p><strong>سوق ضخم وغير فعّال:</strong> التجارة الإلكترونية العالمية تتجه إلى عدة تريليونات من الدولارات سنويًا. رغم ذلك:</p>
+                <ul>
+                    <li><strong>CAC مرتفع:</strong> منافسة إعلانية شرسة تقلّص الهوامش.</li>
+                    <li><strong>ضعف الثقة:</strong> تفاوت الجودة، تأخر الشحن، تجربة إرجاع مرهقة.</li>
+                    <li><strong>ولاء منخفض:</strong> لا يتم تحويل العميل إلى شريك في النجاح.</li>
+                    <li><strong>فجوة الويب3:</strong> رموز كثيرة دون نموذج أعمال أو تدفقات نقدية مستدامة.</li>
+                </ul>
+                <p><strong>فرصتنا:</strong> بناء علامة تجارة إلكترونية عالمية بربحية شفافة، وجعل المجتمع <strong>مساهم القيمة</strong> عبر أصل انكماشي مرتبط بأداء الأعمال.</p>
+            </section>
+
+            <section id="section-3" aria-labelledby="section-3-title">
+                <h2 id="section-3-title">3) الحل: النظام البيئي لتشيزي (The Cheasy Ecosystem)</h2>
+                <ol>
+                    <li><strong>منصة تجارية عالمية:</strong> تبدأ بدروبشيبينغ مُحسّن، وتتوسع إلى منتجات حصرية <strong>Cheasy Originals</strong> وبنية لوجستية <strong>Fulfilled by Cheasy (FBC)</strong> لسرعة الشحن وضبط الجودة.</li>
+                    <li><strong>رمز CHEASY (انكماشي):</strong> أصل مقنن المعروض، تقوده ربحية المنصة لا المضاربات فقط.</li>
+                    <li><strong>محرك القيمة (Buyback &amp; Burn):</strong> تنفيذ ربع سنوي، شفاف، قائم على سياسة مالية معلنة وأدلة تشغيلية.</li>
+                    <li><strong>برنامج ولاء متقدم:</strong> خصومات، شحن مجاني، امتيازات، ومزايا حيازة/تخزين (Staking) غير وصائية، تقود الـLTV وتخفض CAC.</li>
+                </ol>
+            </section>
+
+            <section id="section-4" aria-labelledby="section-4-title">
+                <h2 id="section-4-title">4) محرك القيمة: تحويل أرباح التجارة إلى قيمة للمستثمر</h2>
+                <p><strong>الآلية:</strong></p>
+                <ol>
+                    <li>تحقق المنصة أرباحًا صافية (مثال: <strong>100,000$</strong> في ربع معين).</li>
+                    <li>تخصيص <strong>25%</strong> (مثال: <strong>25,000$</strong>) لبرنامج إعادة الشراء.</li>
+                    <li>شراء رموز CHEASY من DEXs وفق سياسة تنفيذ (TWAP/حد انزلاق) لتفادي الأثر السعري المفرط.</li>
+                    <li>إرسال الرموز المشتراة إلى <strong>عنوان حرق</strong> قابل للتدقيق العام.</li>
+                </ol>
+                <p><strong>الأثر:</strong></p>
+                <ul>
+                    <li><strong>انخفاض المعروض</strong> المستمر.</li>
+                    <li><strong>زيادة الندرة</strong> مع سقف معروض ثابت (<strong>1,000,000,000</strong> رمز).</li>
+                    <li><strong>ضغط شراء دوري</strong> لا يعتمد على تقلبات السوق.</li>
+                </ul>
+                <p><strong>صيغة إيضاحية:</strong></p>
+                <p>( <em>Tokens Burned = Buyback USD / Average Market Price (USD/token)</em> )</p>
+                <p>( <em>New Supply = Prev. Supply - Tokens Burned</em> )</p>
+                <p><strong>سياسة تنفيذ حذِرة:</strong></p>
+                <ul>
+                    <li>استخدام <strong>TWAP</strong>، حدود انزلاق، وحماية <strong>MEV</strong>.</li>
+                    <li>تنفيذ مجدول خلال نافذة زمنية لتخفيف التقلبات.</li>
+                    <li>نشر تقارير تنفيذ موقّتة وملخّص ربع سنوي قابل للتدقيق.</li>
+                </ul>
+            </section>
+
+            <section id="section-5" aria-labelledby="section-5-title">
+                <h2 id="section-5-title">5) نموذج العمل وتدفقات الإيرادات (Business Model &amp; Revenue)</h2>
+                <ul>
+                    <li><strong>هوامش بيع المنتجات</strong> (D2C وMarketplace لاحقًا).</li>
+                    <li><strong>رسوم الشحن المحسّنة</strong> عبر <strong>FBC</strong>.</li>
+                    <li><strong>اشتراكات ولاء مميزة (Premium Tiers):</strong> مزايا حصرية.</li>
+                    <li><strong>رسوم سوق للبائعين</strong> عند فتح المنصة لأطراف ثالثة.</li>
+                    <li><strong>عوائد خزانة متحفظة</strong> (أدوات منخفضة المخاطر، وفق سياسات امتثال واضحة).</li>
+                </ul>
+                <p><strong>مؤشرات محورية (KPIs):</strong> CAC/LTV، معدل تكرار الشراء، هامش إجمالي وصافي، زمن الشحن، نسبة المرتجعات، حجم الشراء والحرق، نسبة الحرق إلى المعروض المتداول.</p>
+            </section>
+
+            <section id="section-6" aria-labelledby="section-6-title">
+                <h2 id="section-6-title">6) اقتصاديات الرمز (Tokenomics) وتوزيع الاستثمار</h2>
+                <p><strong>المعروض الكلي:</strong> <strong>1,000,000,000 CHEASY</strong> (سقف ثابت).</p>
+                <p><strong>التوزيع المقترح:</strong></p>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>البند</th>
+                                <th>النسبة</th>
+                                <th>سياسات الفتح/المنح</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>التسويق والنظام البيئي</td>
+                                <td><strong>40%</strong></td>
+                                <td>قفل جزئي مع إطلاق خطي 36 شهرًا لدعم الحوافز والنمو</td>
+                            </tr>
+                            <tr>
+                                <td>الطرح العام والخاص</td>
+                                <td><strong>30%</strong></td>
+                                <td>تقسيم (Seed/Private/Public) مع جداول استحقاق واضحة (أمثلة أدناه)</td>
+                            </tr>
+                            <tr>
+                                <td>الفريق</td>
+                                <td><strong>15%</strong></td>
+                                <td><strong>Cliff 12 شهرًا</strong> + استحقاق خطي 36 شهرًا</td>
+                            </tr>
+                            <tr>
+                                <td>السيولة</td>
+                                <td><strong>10%</strong></td>
+                                <td>قفل LP/خزائن سيولة 18–24 شهرًا</td>
+                            </tr>
+                            <tr>
+                                <td>صندوق الطوارئ</td>
+                                <td><strong>5%</strong></td>
+                                <td>بإشراف حوكمة ومفاتيح متعددة التوقيع</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>تفصيل جولات الطرح (مثال توضيحي):</strong></p>
+                <ul>
+                    <li><strong>Seed (10%):</strong> قفل 6 أشهر، ثم خطي 18–24 شهرًا.</li>
+                    <li><strong>Private (12%):</strong> قفل 3 أشهر، ثم خطي 18–24 شهرًا.</li>
+                    <li><strong>Public (8%):</strong> فتح TGE جزئي (مثلاً 20–30%)، والباقي خطي 6–12 شهرًا.</li>
+                </ul>
+                <p><strong>مبادئ تصميم التوكن:</strong></p>
+                <ul>
+                    <li>معيار <strong>ERC-20</strong> على سلسلة EVM (L2 مفضّلة للرسوم المنخفضة).</li>
+                    <li>عناوين خزينة واضحة، سياسات صرف معلنة، وحوكمة على خطوات.</li>
+                </ul>
+            </section>
+
+            <section id="section-7" aria-labelledby="section-7-title">
+                <h2 id="section-7-title">7) خارطة الطريق الاستراتيجية (Strategic Roadmap)</h2>
+                <h3>المرحلة 1 — الإطلاق (2025)</h3>
+                <ul>
+                    <li>TGE وإدراج أولي.</li>
+                    <li>إطلاق المنصة (Beta) بمدفوعات تقليدية ورقمية.</li>
+                    <li>أول 50,000 حامل للرمز، وبلوغ PMF مبكر على 3–5 فئات منتجات.</li>
+                </ul>
+                <h3>المرحلة 2 — التوسع والبنية (2026–2027)</h3>
+                <ul>
+                    <li>إطلاق أول مركز <strong>FBC</strong> إقليمي لتقليص زمن الشحن 30–50%.</li>
+                    <li>توسيع المنتجات والأسواق الجغرافية.</li>
+                    <li>تفعيل حوكمة DAO (النسخة 1): تصويتات غير ملزمة وسياسات شفافية متقدمة.</li>
+                </ul>
+                <h3>المرحلة 3 — النضج (2028–2030)</h3>
+                <ul>
+                    <li>إطلاق <strong>Cheasy Originals</strong> بهوامش أعلى.</li>
+                    <li>توسيع <strong>FBC</strong> متعدد القارات.</li>
+                    <li>الانتقال إلى <strong>DAO</strong> كاملة (النسخة 2) بآليات اقتراح/تصويت مرتبطة بحدود مخاطر.</li>
+                </ul>
+                <p><strong>مقاييس نجاح مرحلية:</strong> الإيراد السنوي، الهامش الصافي، عدد الحروق وحجمها، عدد المستخدمين النشطين، معدل تكرار الشراء، زمن الشحن، NPS.</p>
+            </section>
+
+            <section id="section-8" aria-labelledby="section-8-title">
+                <h2 id="section-8-title">8) لماذا الاستثمار الآن؟</h2>
+                <ul>
+                    <li><strong>مرحلة مبكرة</strong> برافعة انكماشية مرتبطة بمبيعات حقيقية.</li>
+                    <li><strong>نموذج مُثبت ومبتكر</strong> يجسر الفجوة بين eCom والويب3.</li>
+                    <li><strong>فريق متعدد الخبرات</strong> (التجارة، اللوجستيات، البلوك تشين، التسويق).</li>
+                    <li><strong>أصل انكماشي حقيقي:</strong> تراجع معروض مقابل ربحية تشغيلية.</li>
+                </ul>
+            </section>
+
+            <section id="section-9" aria-labelledby="section-9-title">
+                <h2 id="section-9-title">9) نقاط القوة ونقاط الضعف (SWOT)</h2>
+                <h3>نقاط القوة</h3>
+                <ul>
+                    <li>ربط مباشر بين الأداء التشغيلي وقيمة الأصل.</li>
+                    <li>برنامج ولاء/حيازة يقلّل CAC ويرفع LTV.</li>
+                    <li>شفافية تقنية (عناوين الحرق، تقارير ربع سنوية) وحوكمة تدريجية.</li>
+                    <li>مرونة بنيوية (D2C → Originals → Marketplace → FBC).</li>
+                </ul>
+                <h3>نقاط الضعف</h3>
+                <ul>
+                    <li>تعقيد تشغيلي (سلسلة توريد + تنفيذ مالي on-chain).</li>
+                    <li>حساسية النموذج لتقلبات الأسعار أثناء الشراء.</li>
+                    <li>الحاجة لثقة سوقية مبكرة وإثبات اتساق الأرباح.</li>
+                </ul>
+                <h3>الفرص</h3>
+                <ul>
+                    <li>تبنّي عالمي متزايد للدفع الرقمي.</li>
+                    <li>شراكات لوجستية وإطلاق Originals بهوامش أعلى.</li>
+                    <li>فتح المنصة للبائعين مع سياسات جودة.</li>
+                </ul>
+                <h3>التهديدات</h3>
+                <ul>
+                    <li>منافسة من عمالقة eCom ومنصات Web2/3.</li>
+                    <li>تغيّرات تنظيمية متسارعة.</li>
+                    <li>مخاطر أمن سيبراني وسلاسل توريد.</li>
+                </ul>
+            </section>
+
+            <section id="section-10" aria-labelledby="section-10-title">
+                <h2 id="section-10-title">10) مقارنة بالأسواق/النماذج الأخرى</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>العنصر</th>
+                                <th>eCom تقليدي</th>
+                                <th>نقاط ولاء Web2</th>
+                                <th>مشاريع Web3 رمزية عامة</th>
+                                <th>Cheasy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>مصدر القيمة</td>
+                                <td>هامش بيع فقط</td>
+                                <td>نقاط غير قابلة للتداول</td>
+                                <td>غالبًا مضاربة بلا تدفق نقدي</td>
+                                <td><strong>أرباح تشغيلية → Buyback &amp; Burn</strong></td>
+                            </tr>
+                            <tr>
+                                <td>الحوافز</td>
+                                <td>قصيرة الأجل</td>
+                                <td>مغلقة داخل نظام المنصة</td>
+                                <td>غير مترابطة مع أعمال حقيقية</td>
+                                <td><strong>محاذاة عميقة بين المنصة والمجتمع</strong></td>
+                            </tr>
+                            <tr>
+                                <td>الشفافية</td>
+                                <td>محدودة</td>
+                                <td>مملوكة ومركزية</td>
+                                <td>on-chain جزئيًا</td>
+                                <td><strong>تقارير حرق، عناوين عامة، سياسات منشورة</strong></td>
+                            </tr>
+                            <tr>
+                                <td>الولاء</td>
+                                <td>كوبونات/خصومات</td>
+                                <td>طبقات مغلقة</td>
+                                <td>حوافز رمزية ضعيفة</td>
+                                <td><strong>ولاء + حيازة/استخدام الرمز</strong></td>
+                            </tr>
+                            <tr>
+                                <td>المخاطر</td>
+                                <td>تآكل الهوامش</td>
+                                <td>ديون ولاء</td>
+                                <td>فراغ اقتصادي</td>
+                                <td><strong>تنفيذ منضبط + حوكمة + شفافية</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="section-11" aria-labelledby="section-11-title">
+                <h2 id="section-11-title">11) ما الذي يميز تشيزي؟ (Key Differentiators)</h2>
+                <ul>
+                    <li><strong>جسر اقتصادي حقيقي</strong> بين مبيعات eCom وندرة أصل رقمي.</li>
+                    <li><strong>ولاء-مُلكية:</strong> العميل ليس متسوقًا فحسب، بل مشاركًا في منظومة قيمة.</li>
+                    <li><strong>تنفيذ مالي شفاف</strong> مع ضوابط (TWAP/MEV/انزلاق) وتقارير تدقيق.</li>
+                    <li><strong>تمكين بائعين</strong> لاحقًا ضمن معايير جودة موحّدة وFBC.</li>
+                </ul>
+            </section>
+
+            <section id="section-12" aria-labelledby="section-12-title">
+                <h2 id="section-12-title">12) صورة تصويرية لطريقة العمل + رحلة العميل (حياة الطلب)</h2>
+                <h3>(أ) مخطط القيمة (ASCII)</h3>
+                <pre><code>[مبيعات المنصة] → [إيرادات] → [أرباح صافية]
+                        ↓ 25%
+                 [تخصيص برنامج الشراء]
+                        ↓ تنفيذ DEX (TWAP/حد انزلاق)
+                    [شراء CHEASY]
+                        ↓
+                    [عنوان الحرق]
+                        ↓
+                  [انخفاض المعروض]
+                        ↓
+                [زيادة الندرة/القيمة]</code></pre>
+                <h3>(ب) رحلة العميل (Order Lifecycle)</h3>
+                <ol>
+                    <li><strong>الاكتشاف:</strong> إعلانات/SEO/إحالات المجتمع.</li>
+                    <li><strong>التقييم:</strong> صفحات منتجات موثقة، تقييمات، سياسة إرجاع واضحة.</li>
+                    <li><strong>الدفع:</strong> بطاقات/تحويلات/عملات رقمية، خصومات لحاملي CHEASY.</li>
+                    <li><strong>المعالجة:</strong> تحقّق مخزون، التوجيه إلى FBC/المورّد.</li>
+                    <li><strong>الشحن:</strong> تتبّع لحظي، SLA زمني.</li>
+                    <li><strong>التسليم:</strong> تأكيد، نافذة إرجاع عادلة.</li>
+                    <li><strong>الولاء:</strong> مكافآت/مزایا طبقية، عروض حصرية.</li>
+                    <li><strong>الحيازة:</strong> حوافز تخزين غير وصائية (Staking) لا تتطلب تنازلًا عن الحيازة.</li>
+                    <li><strong>التكرار:</strong> توصيات مخصصة، مجتمع يُنشّط المحتوى والإحالات.</li>
+                </ol>
+            </section>
+
+            <section id="section-13" aria-labelledby="section-13-title">
+                <h2 id="section-13-title">13) الفصل بين المتجر والعملة (توضيح كامل)</h2>
+                <ul>
+                    <li><strong>كيانان متمايزان قانونيًا وتشغيليًا:</strong>
+                        <ul>
+                            <li><strong>تشيزي للتجارة الإلكترونية:</strong> كيان تشغيلي يُولّد الإيرادات والأرباح، ويتحمل مسؤوليات سلسلة التوريد، خدمة العملاء، والجودة.</li>
+                            <li><strong>رمز CHEASY:</strong> أصل رقمي نَفعي (utility) يُستخدم للولاء، الخصومات، الامتيازات، والحَوكمة التدريجية.</li>
+                        </ul>
+                    </li>
+                    <li><strong>عدم وجود حقوق ملكية أو أرباح مباشرة:</strong>
+                        <ul>
+                            <li>امتلاك CHEASY <strong>لا يمنح</strong> حقوق ملكية أو توزيعات أرباح أو مطالبات على أصول الشركة.</li>
+                            <li><strong>برنامج الشراء والحرق</strong> سياسة تشغيلية مُعلنة ومشروطة بالأرباح والتدفق النقدي، وليس التزامًا تعاقديًا تجاه حاملي الرمز.</li>
+                        </ul>
+                    </li>
+                    <li><strong>الشفافية دون وعود ربحية:</strong>
+                        <ul>
+                            <li>نشر <strong>تقارير أرباح مُبسّطة</strong>، و<strong>سجلات تنفيذ الشراء</strong>، و<strong>عناوين الحرق</strong> لأغراض التدقيق العام.</li>
+                            <li>قد تتغير نسب التخصيص/التنفيذ عبر حوكمة وسياسات مخاطر معلنة، مع احترام المتطلبات التنظيمية.</li>
+                        </ul>
+                    </li>
+                    <li><strong>امتثال وحماية:</strong>
+                        <ul>
+                            <li>KYC/AML في جولات الطرح الخاصة حيثما لزم.</li>
+                            <li>تجنّب التسويق المالي المضلّل؛ فصل واضح بين <strong>منفعة الرمز</strong> و<strong>أداء الشركة</strong>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section id="section-14" aria-labelledby="section-14-title">
+                <h2 id="section-14-title">14) الهندسة التقنية والتشغيلية</h2>
+                <p><strong>اختيار السلسلة:</strong> EVM (مثال L2: Base/Arbitrum/Polygon PoS) لرسوم منخفضة وقابلية تبنٍ.</p>
+                <p><strong>العقود الذكية:</strong></p>
+                <ul>
+                    <li>ERC-20 لرمز CHEASY.</li>
+                    <li><strong>خزائن متعددة التوقيع</strong> (3/5 أو 4/7) مع <strong>Time-lock</strong> للمعاملات الكبرى.</li>
+                    <li>وحدة Buyback Proxy (اختيارية) لتنفيذ مجدول عبر DEX Aggregators.</li>
+                </ul>
+                <p><strong>الأوراكل/الأسعار:</strong></p>
+                <ul>
+                    <li>TWAP من مجمّعات سيولة متعددة.</li>
+                    <li>حدود انزلاق ومحافظ تنفيذ منفصلة.</li>
+                </ul>
+                <p><strong>الأمن:</strong></p>
+                <ul>
+                    <li>تدقيق طرف ثالث + برنامج مكافآت أخطاء.</li>
+                    <li>مراقبة on-chain ومصائد MEV حيث ممكن.</li>
+                </ul>
+                <p><strong>البيانات والتقارير:</strong></p>
+                <ul>
+                    <li>لوحات قياس: حجم الشراء، الحرق، السعر المتوسط، أثر الانزلاق.</li>
+                    <li>نشر CSV/JSON ربع سنوي للشراء والحرق.</li>
+                </ul>
+            </section>
+
+            <section id="section-15" aria-labelledby="section-15-title">
+                <h2 id="section-15-title">15) الحوكمة والشفافية</h2>
+                <ul>
+                    <li><strong>المرحلة 1:</strong> مجلس تشغيل داخلي + تقارير ربع سنوية + أصوات استشارية للمجتمع (Snapshot).</li>
+                    <li><strong>المرحلة 2:</strong> اقتراحات مُقيّدة النطاق (بارامترات الشراء، حدود المخاطر، تخصيص حوافز).</li>
+                    <li><strong>المرحلة 3:</strong> DAO بميزانية محدودة المخاطر، ضوابط فصل الواجبات، ولجان مراجعة.</li>
+                </ul>
+                <p><strong>الشفافية:</strong></p>
+                <ul>
+                    <li>عناوين خزائن معلنة.</li>
+                    <li>سياسات واضحة لاستخدام الخزينة.</li>
+                    <li>تدقيق سنوي خارجي للعمليات الرئيسية ذات الأثر المالي.</li>
+                </ul>
+            </section>
+
+            <section id="section-16" aria-labelledby="section-16-title">
+                <h2 id="section-16-title">16) الامتثال القانوني (إطار عام)</h2>
+                <ul>
+                    <li>مراجعة المناطق القضائية المناسبة (مثال: <strong>ADGM/DIFC</strong>، مناطق أوروبية، أو ولايات بحرية) وفق نشاط كل كيان.</li>
+                    <li>التزامات ضريبية ومحاسبية منفصلة للكيان التجاري وكيان الرمز (إن وجد).</li>
+                    <li>الالتزام بقواعد حماية المستهلك، وإرجاع السلع، والخصوصية (GDPR/قوانين محلية).</li>
+                    <li><strong>إفصاح:</strong> لا تُعد CHEASY مطالبة بحقوق في شركة تشيزي ولا ضمانًا بقيمة مستقبلية.</li>
+                </ul>
+                <blockquote>
+                    <strong>ملاحظة:</strong> يجب استشارة مستشارين قانونيين محليين قبل أي طرح أو توزيع عبر الحدود.
+                </blockquote>
+            </section>
+
+            <section id="section-17" aria-labelledby="section-17-title">
+                <h2 id="section-17-title">17) إدارة الخزانة وسياسة الشراء والحرق</h2>
+                <ul>
+                    <li>تخصيص ربع سنوي = <strong>25% من صافي الربح</strong> (بعد الضرائب/المخصصات) لبرنامج الشراء.</li>
+                    <li>نافذة تنفيذ: 2–4 أسابيع بعد إقفال الربع.</li>
+                    <li>ضوابط: حد انزلاق، سقف يومي، متغيرات TWAP، منع التداول الذاتي.</li>
+                    <li>تقرير: عنوان المعاملة، متوسط السعر، حجم الحرق، تأثير على المعروض.</li>
+                </ul>
+                <p><strong>مثال حسابي:</strong></p>
+                <ul>
+                    <li>صافي الربح: 100,000$ → تخصيص 25,000$.</li>
+                    <li>سعر السوق المتوسط: 0.05$ → حرق <strong>500,000</strong> رمز.</li>
+                </ul>
+            </section>
+
+            <section id="section-18" aria-labelledby="section-18-title">
+                <h2 id="section-18-title">18) خطة الانطلاق إلى السوق (GTM) والمجتمع</h2>
+                <ul>
+                    <li>فئات منتجات أولية عالية الطلب وهوامش جيدة.</li>
+                    <li>برنامج إحالة مرتبط بحيازة CHEASY.</li>
+                    <li>محتوى تعليمي حول الاسترداد، الخصومات، ومنافع الولاء.</li>
+                    <li>شراكات مؤثرين/مجتمعات CryptoCommerce.</li>
+                    <li>عمليات محلية في أسواق مختارة مع SLA واضحة للخدمة.</li>
+                </ul>
+            </section>
+
+            <section id="section-19" aria-labelledby="section-19-title">
+                <h2 id="section-19-title">19) إدارة المورّدين والجودة (FBC)</h2>
+                <ul>
+                    <li>تدقيق مورّدين متعدد المستويات.</li>
+                    <li><strong>SLA شحن</strong> (مثلاً 48–72 ساعة للمعالجة، شحن 5–10 أيام دوليًا في المرحلة الأولى).</li>
+                    <li>بوابة مرتجعات سلسة.</li>
+                    <li>مقاييس جودة: نسبة العيوب، زمن الاستبدال، CSAT/NPS.</li>
+                </ul>
+            </section>
+
+            <section id="section-20" aria-labelledby="section-20-title">
+                <h2 id="section-20-title">20) المخاطر وخطط التخفيف</h2>
+                <ul>
+                    <li><strong>مخاطر تنظيمية:</strong> مراقبة مستمرة، مرونة في السياسة، استشارات دورية.</li>
+                    <li><strong>تقلبات السوق:</strong> تنفيذ TWAP، حدود انزلاق، تنويع السيولة.</li>
+                    <li><strong>سلاسل التوريد:</strong> تعدد مورّدين، مخزون أمان، عقود خدمة.</li>
+                    <li><strong>الأمن السيبراني:</strong> تدقيقات، فصل صلاحيات، نسخ احتياطي، Bug Bounty.</li>
+                    <li><strong>تنفيذ الحوكمة:</strong> مراحل تدريجية وحدود مخاطر وعدم تمكين مطلق مبكرًا.</li>
+                </ul>
+            </section>
+
+            <section id="section-21" aria-labelledby="section-21-title">
+                <h2 id="section-21-title">21) مؤشرات الأداء والشفافية للمستثمرين</h2>
+                <ul>
+                    <li>تقارير ربع سنوية: الأرباح، تخصيص الشراء، تفاصيل التنفيذ، كمية الحرق.</li>
+                    <li>لوحات عامة: المعروض المتداول، إجمالي المحروق، نسبة الحرق/الربع.</li>
+                    <li>مقاييس eCom: CAC/LTV، التكرار، الهامش، المرتجعات.</li>
+                </ul>
+            </section>
+
+            <section id="section-22" aria-labelledby="section-22-title">
+                <h2 id="section-22-title">22) استخدام المتحصلات (Use of Proceeds) — مثال توضيحي</h2>
+                <ul>
+                    <li>35% نمو وتسويق وأداء (Paid/SEO/إحالات).</li>
+                    <li>25% منتجات ومخزون أولي وFBC.</li>
+                    <li>20% تقنية ومنتج (متجر، عقود، مراقبة، بيانات).</li>
+                    <li>10% عمليات وخدمة عملاء.</li>
+                    <li>10% قانون/امتثال/تدقيق.</li>
+                </ul>
+            </section>
+
+            <section id="section-23" aria-labelledby="section-23-title">
+                <h2 id="section-23-title">23) ملاحق مختصرة</h2>
+                <ul>
+                    <li><strong>أ) قاموس مصطلحات:</strong> Buyback &amp; Burn، TWAP، MEV، FBC، DAO، TGE…</li>
+                    <li><strong>ب) سياسات أولية:</strong> سياسة المرتجعات، جودة المورّد، حدود تنفيذ الشراء، نموذج تقرير الحرق.</li>
+                    <li><strong>ج) عناوين:</strong> ستُنشر العناوين الرسمية لاحقًا بعد التدقيق الأمني.</li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="conclusion-title">
+                <h2 id="conclusion-title">خاتمة</h2>
+                <p><strong>تشيزي</strong> تقدّم أطروحة استثمارية تربط <strong>قوة الربحية التشغيلية</strong> بــ <strong>ندرة أصل رقمي</strong> عبر حوكمة وشفافية وتصميم تقني مدروس. نموذج يوازن بين نمو تجارة إلكترونية رشيق، وبرنامج ولاء مُحرّك للقيمة، وآلية انكماشية منضبطة تخدم المجتمع على المدى الطويل.</p>
+            </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; <span id="current-year"></span> Cheasy. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
