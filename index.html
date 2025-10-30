@@ -287,6 +287,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" /><path stroke-linecap="round" stroke-linejoin="round" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" /></svg>
                         <span>توقعاتنا المالية</span>
                     </a>
+                    <a href="#monthly-buyback-reports" class="btn-secondary text-lg inline-flex items-center border border-slate-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h6m-6 4h10" /></svg>
+                        <span>التقارير الشهرية للشراء والحرق</span>
+                    </a>
                 </div>
             </div>
         </section>
@@ -321,7 +325,7 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="card bg-slate-50 fade-in-up"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">🛍️</span> منصة تجارية عالمية</h3><p class="text-slate-600">سنبدأ بنموذج دروبشيبينغ محسّن ونتطور لتقديم منتجات حصرية وشبكة لوجستية خاصة لضمان الجودة والسرعة بعد الإطلاق.</p></div>
                     <div class="card bg-slate-50 fade-in-up" style="transition-delay: 100ms;"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">💰</span> رمز CHEASY (أصل انكماشي)</h3><p class="text-slate-600">نخطط لإطلاق رمز يقدم حصة في نجاح النظام البيئي، بحيث ترتبط قيمته مباشرة بأداء الأعمال التجارية المستقبلية.</p></div>
-                    <div class="card bg-slate-50 fade-in-up" style="transition-delay: 200ms;"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">🔥</span> محرك القيمة (Buyback & Burn)</h3><p class="text-slate-600">ستخصص الآلية المقترحة 25% من صافي أرباح المتجر لإعادة شراء الرمز وحرقه، مما يقلل المعروض ويزيد الندرة عندما تبدأ الإيرادات.</p></div>
+                    <div class="card bg-slate-50 fade-in-up" style="transition-delay: 200ms;"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">🔥</span> محرك القيمة (Buyback & Burn)</h3><p class="text-slate-600">تخصيص شهري قدره 25% من صافي الأرباح يُحوَّل إلى USDT (مع دعم USDC) لتنفيذ عمليات شراء عبر PancakeSwap v2 بانزلاق 1% وحد أثر سعري 0.5%، ثم حرق الرموز في العنوان 0x000000000000000000000000000000000000dEaD.</p></div>
                     <div class="card bg-slate-50 fade-in-up" style="transition-delay: 300ms;"><h3 class="font-extrabold text-xl mb-2 flex items-center"><span class="text-3xl ml-3">🤝</span> برنامج ولاء Web3</h3><p class="text-slate-600">نهدف إلى تحويل العملاء إلى شركاء عبر مكافأتهم على حيازة الرمز بخصومات وامتيازات بعد بدء عمليات البيع، مما يخلق مجتمعًا مخلصًا.</p></div>
                 </div>
             </div>
@@ -431,6 +435,25 @@
                         <p class="text-2xl font-bold">سيحدد لاحقًا</p>
                         <p class="text-amber-100 mt-3 text-sm">سيتم تتبع هذا المؤشر عند فتح المتجر أمام العملاء.</p>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="monthly-buyback-reports" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="fade-in-up text-center">
+                    <h2 class="section-title">التقارير الشهرية للشراء والحرق</h2>
+                    <p class="section-subtitle">يتم تنفيذ برنامج الشراء والحرق شهريًا باستخدام USDT كعملة أساسية (مع دعم USDC)، عبر PancakeSwap v2 على BNB Smart Chain، مع انزلاق 1% وحد أثر سعري 0.5% وحماية من MEV.</p>
+                </div>
+                <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4 fade-in-up">
+                    <div class="card"><h3 class="font-extrabold text-xl mb-3 text-slate-800">حجم الشراء</h3><p class="text-slate-600">إجمالي USDT/USDC المستخدم خلال النافذة الشهرية.</p></div>
+                    <div class="card"><h3 class="font-extrabold text-xl mb-3 text-slate-800">متوسط سعر التنفيذ</h3><p class="text-slate-600">TWAP محسوب على فترة التنفيذ لضمان حدود الأثر السعري.</p></div>
+                    <div class="card"><h3 class="font-extrabold text-xl mb-3 text-slate-800">كمية الحرق</h3><p class="text-slate-600">إجمالي رموز CHEASY المحروقة وإرسالها إلى العنوان الثابت.</p></div>
+                    <div class="card"><h3 class="font-extrabold text-xl mb-3 text-slate-800">المعروض بعد الحرق</h3><p class="text-slate-600">المعروض المتداول بعد تطبيق برنامج الشهر، موثّق في تقرير شفاف.</p></div>
+                </div>
+                <div class="text-center mt-10 fade-in-up">
+                    <p class="text-slate-600 text-lg mb-3">عنوان الحرق: <span class="font-mono text-blue-600">0x000000000000000000000000000000000000dEaD</span></p>
+                    <a href="#" class="btn-secondary inline-flex items-center">قريبًا — لوحة تقارير شهرية قابلة للتدقيق</a>
                 </div>
             </div>
         </section>
